@@ -1,13 +1,13 @@
-#include user_scripts\mp\m203\utility;
-#include user_scripts\mp\m203\structure;
+#include scripts\mp\admin_menu\utility;
+#include scripts\mp\admin_menu\structure;
 
-#include user_scripts\mp\m203\ui\ui_utility;
+#include scripts\mp\admin_menu\ui\ui_utility;
 
-#include user_scripts\mp\m203\menu;
+#include scripts\mp\admin_menu\menu;
 
 open_menu( menu ) {
     if( !isdefined( menu ) )
-        menu = isdefined( self.menu ) && self.menu != "M203" ? self.menu : "M203";
+        menu = isdefined( self.menu ) && self.menu != "Welcome Menu" ? self.menu : "Welcome Menu";
     
     if( !isdefined( self.cursor[ menu ] ) )
         self.cursor[ menu ] = 0;

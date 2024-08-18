@@ -1,6 +1,6 @@
 #include common_scripts\utility;
 
-#include user_scripts\mp\m203\utility;
+#include scripts\mp\admin_menu\utility;
 
 god_mode() {
     self.god_mode = !isdefined( self.god_mode ) ? true : undefined;

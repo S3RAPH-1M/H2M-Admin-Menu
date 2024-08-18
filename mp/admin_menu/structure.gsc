@@ -1,6 +1,6 @@
-#include user_scripts\mp\m203\utility;
+#include scripts\mp\admin_menu\utility;
 
-#include user_scripts\mp\m203\ui\ui;
+#include scripts\mp\admin_menu\ui\ui;
 
 menu_array( menu ) {
     self.cursor = !isdefined( self.cursor ) ? [] : self.cursor;

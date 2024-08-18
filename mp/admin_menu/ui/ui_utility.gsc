@@ -1,7 +1,7 @@
 #include maps\mp\gametypes\_hud;
 #include maps\mp\gametypes\_hud_util;
 
-#include user_scripts\mp\m203\utility;
+#include scripts\mp\admin_menu\utility;
 
 text( text, font, scale, align, relative, x, y, color, alpha, sort ) {
     textelem = self createfontstring( font, scale );

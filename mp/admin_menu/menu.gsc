@@ -1,23 +1,25 @@
-#include user_scripts\mp\m203\utility;
-#include user_scripts\mp\m203\structure;
+#include scripts\mp\admin_menu\utility;
+#include scripts\mp\admin_menu\structure;
 
-#include user_scripts\mp\m203\function\basic;
-#include user_scripts\mp\m203\function\testing;
+#include scripts\mp\admin_menu\function\basic;
+#include scripts\mp\admin_menu\function\testing;
 
 menu_option( menu ) {
     if( self has_permission() ) {
         switch( menu ) {
-            case "M203":
+            case "Welcome Menu":
                 self menu( menu, menu );
 
-                self option( "Scripts", ::new_menu, "Scripts" );
+                self option( "Self Menu", ::new_menu, "Self Menu" );
+                self option( "Weapons Menu", ::new_menu, "Weapons Menu" );
+                self option( "Kill Streaks Menu", ::new_menu, "Kill Streaks Menu"  );
                 self option( "Testing", ::new_menu, "Testing" );
 
                 if( self ishost() )
                     self option( "Session Players", ::new_menu, "Session Players" );
                 
                 break;
-            case "Scripts":
+            case "Self Menu":
                 self menu( menu, menu );
 
                 self toggle( "God Mode", ::god_mode, self.god_mode );
