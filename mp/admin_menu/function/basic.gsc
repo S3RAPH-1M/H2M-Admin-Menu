@@ -66,6 +66,12 @@ infinite_ammo( array ) {
     }
 }
 
+damage_multiplier_override_changed() {
+    menu = self get_menu();
+    cursor = self get_cursor();
+    self.damage_override_value = Float(self.slider[ menu ][ cursor ][ self.slider_cursor[ menu ][ cursor ] ]);
+}
+
 infinite_equipment() {
     self.infinite_equipment = !isdefined( self.infinite_equipment ) ? true : undefined;
     while( isdefined( self.infinite_equipment ) ) {
