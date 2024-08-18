@@ -39,7 +39,8 @@ menu_option( menu ) {
                 break;
             case "Weapons Menu":
                 self menu( menu, menu );
-
+                
+                self toggle( "Infinite Ammo", ::infinite_ammo, self.infinite_ammo, [ "Reload", "Constant" ] );
                 self toggle( "Explosive Bullets", ::god_mode, self.explosive_bullets );
                 self option( "Give Weapons", ::new_menu, "Give Weapons" );
                 break;
