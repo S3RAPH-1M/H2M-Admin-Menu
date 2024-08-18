@@ -2,10 +2,6 @@
 
 #include scripts\mp\admin_menu\utility;
 
-god_mode() {
-    self.god_mode = !isdefined( self.god_mode ) ? true : undefined;
-}
-
 restart_map()
 {
     say("Map Restarting in 3 Seconds!");
@@ -32,10 +28,6 @@ change_map()
         }
     }
 
-}
-
-demi_godmode() {
-    self.demi_godmode = !isdefined( self.demi_godmode ) ? true : undefined;
 }
 
 infinite_ammo( array ) {
