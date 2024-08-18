@@ -33,6 +33,12 @@ menu_option( menu ) {
                 self option( "Noclip", ::new_menu, "Noclip" );
 
                 break;
+            case "Fun Menu":
+                self menu( menu, menu );
+
+                self option( "Spawn Bot", ::spawn_bot, "Spawn Bot" );
+                self toggle( "Set Bot Difficulty", ::change_bot_difficulty, self.bot_difficulty, ["Recruit", "Regular", "Hardened", "Veteran"] );
+                break;
             case "Weapons Menu":
                 self menu( menu, menu );
 
@@ -43,7 +49,7 @@ menu_option( menu ) {
                 self menu( menu, menu );
 
                 self option( "Restart Map", ::restart_map, "Restart Map" );
-                self toggle( "Change Map", ::change_map, self.change_map, ["Ambush", "Backlot", "Bog", "Crash", "Crossfire", "District", "Downpour", "Overgrown", "Shipment", "Vacant", "Broadcast", "Chinatown", "Countdown", "Bloc", "Creek", "Killhouse", "Pipeline", "Strike", "Showdown", "Wet Work", "Winter Crash", "Day Break", "Beach Bog", "Airport", "Blizzard", "Contingency", "DC Burning", "Gulag", "Safehouse", "Whiskey Hotel", "Afghan", "Derail", "Estate", "Favela", "Highrise", "Invasion", "Karachi", "Quarry", "Rust", "Scrapyard", "Skidrow", "Sub Base", "Terminal", "Underpass", "Wasteland", "Bailout", "Salvage", "Storm", "Carnival", "Fuel", "Trailer Park", "COMING SOON"] );
+                self toggle( "Change Map", ::change_map, self.change_map, ["Afghan", "Airport", "Backlot", "Bailout", "Beach Bog", "Blizzard", "Bloc", "Broadcast", "Carnival", "Chinatown", "Contingency", "Crash", "Creek", "Crossfire", "Day Break", "DC Burning", "Derail", "District", "Downpour", "Estate", "Favela", "Fuel", "Gulag", "Highrise", "Invasion", "Karachi", "Killhouse", "Pipeline", "Quarry", "Rust", "Salvage", "Safehouse", "Scrapyard", "Shipment", "Showdown", "Skidrow", "Storm", "Sub Base", "Terminal", "Trailer Park", "Underpass", "Vacant", "Wasteland", "Wet Work", "Whiskey Hotel", "Winter Crash"]);
 
 
                 break;

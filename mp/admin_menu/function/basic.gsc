@@ -120,3 +120,39 @@ noclip_adjustable() {
         self.noclip_link delete();
     }
 }
+
+spawn_bot()
+{
+    executeCommand("SpawnBot");
+}
+
+change_bot_difficulty() {
+    self.bot_difficulty = !isdefined( self.bot_difficulty ) ? true : undefined;
+
+    menu = self get_menu();
+    cursor = self get_cursor();
+    while( isdefined( self.bot_difficulty ) ) 
+    {
+        if( self get_menu() == menu )
+        {
+            self.bot_difficulty = self.slider[ menu ][ cursor ][ self.slider_cursor[ menu ][ cursor ] ];
+            difficulty_lower = tolower( self.bot_difficulty );
+            if (difficulty_lower == "recruit") {
+                executeCommand("set bot_DifficultyDefault 1");
+            } else if (difficulty_lower == "regular") {
+                executeCommand("set bot_DifficultyDefault 2");
+            } else if (difficulty_lower == "hardened") {
+                executeCommand("set bot_DifficultyDefault 3");
+            } else if (difficulty_lower == "veteran") {
+                executeCommand("set bot_DifficultyDefault 4");
+            } else {
+                executeCommand("set bot_DifficultyDefault 3"); // Default to Hardened if unknown difficulty
+            }
+            say("Admin has set the Bot Difficulty To: " + self.bot_difficulty)
+            self.bot_difficulty = false;
+            wait 300; // Temporary fix. We need to change the method for option in Structure to take an array.
+        }
+    }
+
+
+}
