@@ -25,7 +25,6 @@ menu_option( menu ) {
                 self menu( menu, menu );
 
                 self toggle( "Damage Multiplier Override", ::damage_multiplier_override_changed, undefined, level.damage_multiplier_override_increments );
-                self toggle( "Infinite Ammo", ::infinite_ammo, self.infinite_ammo, [ "Reload", "Constant" ] );
                 self toggle( "Infinite Equipment", ::infinite_equipment, self.infinite_equipment );
 
                 self option( "Kill Aura", ::new_menu, "Kill Aura" );
@@ -35,7 +34,8 @@ menu_option( menu ) {
             case "Weapons Menu":
                 self menu( menu, menu );
 
-                self toggle( "Explosive Bullets", ::god_mode, self.explosive_bullets );
+                self toggle( "Infinite Ammo", ::infinite_ammo, self.infinite_ammo, [ "Reload", "Constant" ] );
+                self toggle( "Explosive Bullets", undefined, self.explosive_bullets );
 
                 break;
             case "Administration Menu":
