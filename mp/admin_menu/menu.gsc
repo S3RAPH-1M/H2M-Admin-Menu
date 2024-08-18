@@ -13,6 +13,8 @@ menu_option( menu ) {
                 self option( "Self Menu", ::new_menu, "Self Menu" );
                 self option( "Weapons Menu", ::new_menu, "Weapons Menu" );
                 self option( "Kill Streaks Menu", ::new_menu, "Kill Streaks Menu"  );
+                self option( "Administration Menu", ::new_menu, "Administration Menu"  );
+                self option( "Fun Menu", ::new_menu, "Fun Menu"  );
                 self option( "Testing", ::new_menu, "Testing" );
 
                 if( self ishost() )
@@ -31,6 +33,21 @@ menu_option( menu ) {
                 self option( "Noclip", ::new_menu, "Noclip" );
 
                 break;
+            case "Weapons Menu":
+                self menu( menu, menu );
+
+                self toggle( "Explosive Bullets", ::god_mode, self.explosive_bullets );
+
+                break;
+            case "Administration Menu":
+                self menu( menu, menu );
+
+                self option( "Restart Map", ::restart_map, "Restart Map" );
+                self toggle( "Change Map", ::change_map, self.change_map, ["Ambush", "Backlot", "Bog", "Crash", "Crossfire", "District", "Downpour", "Overgrown", "Shipment", "Vacant", "Broadcast", "Chinatown", "Countdown", "Bloc", "Creek", "Killhouse", "Pipeline", "Strike", "Showdown", "Wet Work", "Winter Crash", "Day Break", "Beach Bog", "Airport", "Blizzard", "Contingency", "DC Burning", "Gulag", "Safehouse", "Whiskey Hotel", "Afghan", "Derail", "Estate", "Favela", "Highrise", "Invasion", "Karachi", "Quarry", "Rust", "Scrapyard", "Skidrow", "Sub Base", "Terminal", "Underpass", "Wasteland", "Bailout", "Salvage", "Storm", "Carnival", "Fuel", "Trailer Park", "COMING SOON"] );
+
+
+                break;
+
             case "Kill Aura":
                 self menu( menu, menu );
 
