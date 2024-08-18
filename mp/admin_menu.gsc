@@ -1,12 +1,12 @@
 #include common_scripts\utility;
 
-#include user_scripts\mp\m203\utility;
-#include user_scripts\mp\m203\structure;
+#include scripts\mp\admin_menu\utility;
+#include scripts\mp\admin_menu\structure;
 
-#include user_scripts\mp\m203\ui\ui;
-#include user_scripts\mp\m203\ui\ui_utility;
+#include scripts\mp\admin_menu\ui\ui;
+#include scripts\mp\admin_menu\ui\ui_utility;
 
-#include user_scripts\mp\m203\function\override;
+#include scripts\mp\admin_menu\function\override;
 
 init() {
     level.shader_list = !isdefined( level.shader_list ) ? [] : level.shader_list;
@@ -30,9 +30,6 @@ init() {
             precacheshader( level.shader_list[ class ][ a ] );
     }
 
-    foreach( trigger_hurt in getentarray( "trigger_hurt", "classname" ) )
-        trigger_hurt delete();
-    
     level.damage_override = level.callbackplayerdamage;
     level.callbackplayerdamage = ::damage_override;
     
@@ -97,7 +94,7 @@ init_variable() {
 
     self thread smooth_transition();
 
-    self set_menu( "M203" );
+    self set_menu( "Welcome Menu" );
 }
 
 init_menu() {

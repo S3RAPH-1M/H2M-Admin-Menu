@@ -1,23 +1,27 @@
-#include user_scripts\mp\m203\utility;
-#include user_scripts\mp\m203\structure;
+#include scripts\mp\admin_menu\utility;
+#include scripts\mp\admin_menu\structure;
 
-#include user_scripts\mp\m203\function\basic;
-#include user_scripts\mp\m203\function\testing;
+#include scripts\mp\admin_menu\function\basic;
+#include scripts\mp\admin_menu\function\testing;
 
 menu_option( menu ) {
     if( self has_permission() ) {
         switch( menu ) {
-            case "M203":
+            case "Welcome Menu":
                 self menu( menu, menu );
 
-                self option( "Scripts", ::new_menu, "Scripts" );
+                self option( "Self Menu", ::new_menu, "Self Menu" );
+                self option( "Weapons Menu", ::new_menu, "Weapons Menu" );
+                self option( "Kill Streaks Menu", ::new_menu, "Kill Streaks Menu"  );
+                self option( "Administration Menu", ::new_menu, "Administration Menu"  );
+                self option( "Fun Menu", ::new_menu, "Fun Menu"  );
                 self option( "Testing", ::new_menu, "Testing" );
 
                 if( self ishost() )
                     self option( "Session Players", ::new_menu, "Session Players" );
                 
                 break;
-            case "Scripts":
+            case "Self Menu":
                 self menu( menu, menu );
 
                 self toggle( "God Mode", ::god_mode, self.god_mode );
@@ -29,6 +33,21 @@ menu_option( menu ) {
                 self option( "Noclip", ::new_menu, "Noclip" );
 
                 break;
+            case "Weapons Menu":
+                self menu( menu, menu );
+
+                self toggle( "Explosive Bullets", ::god_mode, self.explosive_bullets );
+
+                break;
+            case "Administration Menu":
+                self menu( menu, menu );
+
+                self option( "Restart Map", ::restart_map, "Restart Map" );
+                self toggle( "Change Map", ::change_map, self.change_map, ["Ambush", "Backlot", "Bog", "Crash", "Crossfire", "District", "Downpour", "Overgrown", "Shipment", "Vacant", "Broadcast", "Chinatown", "Countdown", "Bloc", "Creek", "Killhouse", "Pipeline", "Strike", "Showdown", "Wet Work", "Winter Crash", "Day Break", "Beach Bog", "Airport", "Blizzard", "Contingency", "DC Burning", "Gulag", "Safehouse", "Whiskey Hotel", "Afghan", "Derail", "Estate", "Favela", "Highrise", "Invasion", "Karachi", "Quarry", "Rust", "Scrapyard", "Skidrow", "Sub Base", "Terminal", "Underpass", "Wasteland", "Bailout", "Salvage", "Storm", "Carnival", "Fuel", "Trailer Park", "COMING SOON"] );
+
+
+                break;
+
             case "Kill Aura":
                 self menu( menu, menu );
 

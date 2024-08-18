@@ -1,9 +1,37 @@
 #include common_scripts\utility;
 
-#include user_scripts\mp\m203\utility;
+#include scripts\mp\admin_menu\utility;
 
 god_mode() {
     self.god_mode = !isdefined( self.god_mode ) ? true : undefined;
+}
+
+restart_map()
+{
+    say("Map Restarting in 3 Seconds!");
+    wait 3;
+    executeCommand("map_restart");
+}
+
+change_map()
+{
+    self.change_map = !isdefined( self.change_map ) ? true : undefined;
+
+    menu = self get_menu();
+    cursor = self get_cursor();
+    while( isdefined( self.change_map ) ) 
+    {
+        if( self get_menu() == menu )
+        {
+            self.map_selection = self.slider[ menu ][ cursor ][ self.slider_cursor[ menu ][ cursor ] ];
+            map_lower = tolower( self.map_selection );
+            say("Admin Is Changing Map In 3 Seconds To: " + self.map_selection);
+            wait 1;
+            executeCommand("map mp_"+ map_lower);
+            wait 300; // Temporary fix. We need to change the method for option in Structure to take an array.
+        }
+    }
+
 }
 
 demi_godmode() {

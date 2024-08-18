@@ -1,7 +1,7 @@
 #include common_scripts\utility;
 #include maps\mp\_utility;
 
-#include user_scripts\mp\m203\structure;
+#include scripts\mp\admin_menu\structure;
 
 is_int( value ) {
     return isnumber( value ) && !issubstr( value, "." ) ? true : false;
