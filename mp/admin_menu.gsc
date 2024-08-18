@@ -15,7 +15,7 @@ init() {
         level.shader_list[ class ] = !isdefined( level.shader_list[ class ] ) ? [] : level.shader_list[ class ];
 
         if( class == "icon" )
-            foreach( icon in [ "ui_arrow_right", "icon_new", "box_check", "hud_icon_40mm_grenade" ] )
+            foreach( icon in [ "ui_arrow_right", "icon_new", "box_check", "Nigger" ] )
                 level.shader_list[ class ] = array_add( level.shader_list[ class ], icon );
 
         if( class == "rank" )

@@ -13,7 +13,7 @@ open_menu( menu ) {
         self.cursor[ menu ] = 0;
     
     self.m203[ "ui" ][ "color" ] = self shape( "CENTER", "CENTER", -310, -70, 180, 16, self.palette[ "color" ], 1, 2, "white" );
-    self.m203[ "ui" ][ "icon" ] = self shape( "CENTER", "CENTER", -310, -70, 12, 12, self.palette[ "white" ], 1, 3, level.shader_list[ "icon" ][ 3 ] );
+    self.m203[ "ui" ][ "icon" ] = self text( "SERVPH's Admin Menu", self.config[ "font" ], self.config[ "font_scale" ], "LEFT", "CENTER", -345, -70, self.palette[ "white" ], 1, 10 );
     self.m203[ "ui" ][ "header" ] = self shape( "CENTER", "CENTER", -310, -56, 180, 12, self.palette[ "black" ], 1, 4, "white" );
     self.m203[ "ui" ][ "background" ] = self shape( "CENTER", "CENTER", -310, -32, 180, 12, self.palette[ "black" ], .8, 5, "white" );
     self.m203[ "ui" ][ "scrollbar" ] = self shape( "CENTER", "CENTER", -310, -44, 180, 12, self.palette[ "white" ], 1, 7, "white" );
