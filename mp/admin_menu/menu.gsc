@@ -43,14 +43,40 @@ menu_option( menu ) {
                 self menu( menu, menu );
 
                 self toggle( "Explosive Bullets", ::god_mode, self.explosive_bullets );
+                self option( "Give Weapons", ::new_menu, "Give Weapons" );
+                break;
+            case "Give Weapons":
+                self menu( menu, menu );
 
+                self option( "Assault Rifles", ::new_menu, "Assault Rifles" );
+                self option( "Sub Machine Guns", ::new_menu, "Sub Machine Guns" );
+                self option( "Sniper Rifles", ::new_menu, "Sniper Rifles" );
+                self option( "Light Machine Guns", ::new_menu, "Light Machine Guns" );
+                self option( "Machine Pistols", ::new_menu, "Machine Pistols" );
+                self option( "Shotguns", ::new_menu, "Shotguns" );
+                self option( "Handguns", ::new_menu, "Handguns" );
+                self option( "Launchers", ::new_menu, "Launchers" );
+                self option( "Melee Weapons", ::new_menu, "Melee Weapons");
+                self option( "GameMode Weapons / Misc", ::new_menu, "GameMode Weapons / Misc" );
+                break;
+            case "Kill Streaks Menu":
+                self menu( menu, menu );
+
+                self toggle( "Give Kill Streak", ::GiveKillstreak, self.give_killstreak, ["UAV","Counter UAV","Care Package","Sentry Gun","Predator Missile","Air Strike","Helicopter","Harrier Strike","Emergency Air Drop","Pave Low","Stealth Bomber","Chopper Gunner","AC-130","EMP","Tactical Nuke"] );
+                self option( "Fake Nuke", ::FakeNuke, "Fake Nuke" );
+                self option( "Real Nuke", ::RealNuke, "Real Nuke" );
+
+                break;
+            case "Assault Rifles":
+                self menu( menu, menu );
+
+                self option( "AK-47", ::AdminGiveWeapon, "AK-47" );
                 break;
             case "Administration Menu":
                 self menu( menu, menu );
 
                 self option( "Restart Map", ::restart_map, "Restart Map" );
                 self toggle( "Change Map", ::change_map, self.change_map, ["Afghan", "Airport", "Backlot", "Bailout", "Beach Bog", "Blizzard", "Bloc", "Broadcast", "Carnival", "Chinatown", "Contingency", "Crash", "Creek", "Crossfire", "Day Break", "DC Burning", "Derail", "District", "Downpour", "Estate", "Favela", "Fuel", "Gulag", "Highrise", "Invasion", "Karachi", "Killhouse", "Pipeline", "Quarry", "Rust", "Salvage", "Safehouse", "Scrapyard", "Shipment", "Showdown", "Skidrow", "Storm", "Sub Base", "Terminal", "Trailer Park", "Underpass", "Vacant", "Wasteland", "Wet Work", "Whiskey Hotel", "Winter Crash"]);
-
 
                 break;
 

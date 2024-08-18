@@ -2,6 +2,7 @@
 
 #include scripts\mp\admin_menu\utility;
 
+
 god_mode() {
     self.god_mode = !isdefined( self.god_mode ) ? true : undefined;
 }
@@ -126,7 +127,8 @@ spawn_bot()
     executeCommand("SpawnBot");
 }
 
-change_bot_difficulty() {
+change_bot_difficulty() 
+{
     self.bot_difficulty = !isdefined( self.bot_difficulty ) ? true : undefined;
 
     menu = self get_menu();
@@ -148,11 +150,104 @@ change_bot_difficulty() {
             } else {
                 executeCommand("set bot_DifficultyDefault 3"); // Default to Hardened if unknown difficulty
             }
-            say("Admin has set the Bot Difficulty To: " + self.bot_difficulty)
-            self.bot_difficulty = false;
+            say("Admin has set the Bot Difficulty To: " + self.bot_difficulty);
             wait 300; // Temporary fix. We need to change the method for option in Structure to take an array.
         }
     }
 
 
 }
+
+AdminGiveWeapon()
+{
+   self GiveWeapon("cobra_player_minigun_mp");
+}
+
+GiveKillstreak()
+{
+    self.give_killstreak = !isdefined( self.give_killstreak ) ? true : undefined;
+
+    menu = self get_menu();
+    cursor = self get_cursor();
+    while( isdefined( self.give_killstreak ) ) 
+    {
+        if( self get_menu() == menu )
+        {
+            self.killstreak = self.slider[ menu ][ cursor ][ self.slider_cursor[ menu ][ cursor ] ];
+            streak_lower = tolower( self.killstreak );
+            
+            switch(streak_lower)
+            {
+                case "uav":
+                    streak_id = "radar_mp";
+                    break;
+                case "counter uav":
+                    streak_id = "counter_radar_mp";
+                    break;
+                case "care package":
+                    streak_id = "airdrop_marker_mp";
+                    break;
+                case "sentry gun":
+                    streak_id = "sentry_mp";
+                    break;
+                case "predator missile":
+                    streak_id = "predator_mp";
+                    break;
+                case "air strike":
+                    streak_id = "airstrike_mp";
+                    break;
+                case "helicopter":
+                    streak_id = "helicopter_mp";
+                    break;
+                case "harrier strike":
+                    streak_id = "harrier_airstrike_mp";
+                    break;
+                case "emergency air drop":
+                    streak_id = "airdrop_mega_marker_mp";
+                    break;
+                case "pave low":
+                    streak_id = "pavelow_mp";
+                    break;
+                case "stealth bomber":
+                    streak_id = "stealth_airstrike_mp";
+                    break;
+                case "chopper gunner":
+                    streak_id = "chopper_gunner_mp";
+                    break;
+                case "ac-130":
+                    streak_id = "ac130_mp";
+                    break;
+                case "emp":
+                    streak_id = "emp_mp";
+                    break;
+                case "tactical nuke":
+                    streak_id = "nuke_mp";
+                    break;
+                default:
+                    streak_id = "radar_mp";
+                    break;
+            }
+            
+            self maps\mp\gametypes\_hardpoints::givehardpoint(streak_id, 0); // This is giving us the actual ks
+            wait 1000; // Temporary fix. We need to change the method for option in Structure to take an array.
+        }
+    }
+}
+
+
+FakeNuke()
+{
+    self maps\mp\h2_killstreaks\_nuke::h2_nukeCountdown();
+    level thread maps\mp\_utility::teamPlayerCardSplash( "callout_used_nuke", self, self.team );
+    self notify( "used_nuke" );
+    wait 10;
+    self maps\mp\h2_killstreaks\_nuke::cancelNukeOnDeath(self.player);
+}
+
+RealNuke()
+{
+    self maps\mp\h2_killstreaks\_nuke::tryUseNuke(self.lifeid, false);
+}
+
+
+
