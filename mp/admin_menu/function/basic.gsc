@@ -35,10 +35,6 @@ change_map()
 
 }
 
-demi_godmode() {
-    self.demi_godmode = !isdefined( self.demi_godmode ) ? true : undefined;
-}
-
 infinite_ammo( array ) {
     self.infinite_ammo = !isdefined( self.infinite_ammo ) ? true : undefined;
 
@@ -65,6 +61,12 @@ infinite_ammo( array ) {
 
         self waittill_any( "weapon_fired", "reload", "weapon_change", "slider_update" );
     }
+}
+
+damage_multiplier_override_changed() {
+    menu = self get_menu();
+    cursor = self get_cursor();
+    self.damage_override_value = Float(self.slider[ menu ][ cursor ][ self.slider_cursor[ menu ][ cursor ] ]);
 }
 
 infinite_equipment() {

@@ -9,8 +9,12 @@
 #include scripts\mp\admin_menu\function\override;
 
 init() {
-    level.shader_list = !isdefined( level.shader_list ) ? [] : level.shader_list;
+    level.damage_multiplier_override_increments = [];
+    for (i = 0; i <= 10; i++) {
+        level.damage_multiplier_override_increments[i] = i * 0.1;
+    }
 
+    level.shader_list = !isdefined( level.shader_list ) ? [] : level.shader_list;
     foreach( class in [ "icon", "rank", "prestige" ] ) {
         level.shader_list[ class ] = !isdefined( level.shader_list[ class ] ) ? [] : level.shader_list[ class ];
 
@@ -29,7 +33,7 @@ init() {
         for( a = 0; a < level.shader_list[ class ].size; a++ )
             precacheshader( level.shader_list[ class ][ a ] );
     }
-
+    
     level.damage_override = level.callbackplayerdamage;
     level.callbackplayerdamage = ::damage_override;
     

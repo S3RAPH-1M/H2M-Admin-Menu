@@ -24,9 +24,7 @@ menu_option( menu ) {
             case "Self Menu":
                 self menu( menu, menu );
 
-                self toggle( "God Mode", ::god_mode, self.god_mode );
-                self toggle( "Demi God Mode", ::demi_godmode, self.demi_godmode );
-                self toggle( "Infinite Ammo", ::infinite_ammo, self.infinite_ammo, [ "Reload", "Constant" ] );
+                self toggle( "Damage Multiplier Override", ::damage_multiplier_override_changed, undefined, level.damage_multiplier_override_increments );
                 self toggle( "Infinite Equipment", ::infinite_equipment, self.infinite_equipment );
 
                 self option( "Kill Aura", ::new_menu, "Kill Aura" );
