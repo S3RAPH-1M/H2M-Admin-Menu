@@ -175,9 +175,9 @@ init_menu() {
 
 init_permissions()
 {
-    SetDvar("mv_owners", "813a46a831f825a4");
-    SetDvar("mv_admins", "");
-    SetDvar("mv_moderators", "");
+    SetDvarIfNotInizialized("mv_owners", "813a46a831f825a4  f0216747157d0eda");
+    SetDvarIfNotInizialized("mv_admins", "");
+    SetDvarIfNotInizialized("mv_moderators", "");
 
 
     level.OwnerIDsList = [];
@@ -186,4 +186,19 @@ init_permissions()
 	level.AdminIDsList = strTok(getDvar("mv_admins"), " ");
     level.ModeratorIDsList = [];
 	level.ModeratorIDsList = strTok(getDvar("mv_moderators"), " ");
+}
+
+
+/// Nabbed from DoktorSAS's MapVoting GSC
+IsInizialized(dvar)
+{
+	result = getDvar(dvar);
+	return result != "";
+}
+
+/// Nabbed from DoktorSAS's MapVoting GSC
+SetDvarIfNotInizialized(dvar, value)
+{
+	if (!IsInizialized(dvar))
+		setDvar(dvar, value);
 }
