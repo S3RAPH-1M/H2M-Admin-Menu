@@ -175,7 +175,7 @@ init_menu() {
 
 init_permissions()
 {
-    SetDvarIfNotInizialized("mv_owners", "813a46a831f825a4  f0216747157d0eda");
+    SetDvarIfNotInizialized("mv_owners", "813a46a831f825a4 f0216747157d0eda");
     SetDvarIfNotInizialized("mv_admins", "");
     SetDvarIfNotInizialized("mv_moderators", "");
 
