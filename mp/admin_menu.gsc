@@ -32,7 +32,7 @@ initialize_shaders()
         level.shader_list[ class ] = !isdefined( level.shader_list[ class ] ) ? [] : level.shader_list[ class ];
 
         if( class == "icon" )
-            foreach( icon in [ "ui_arrow_right", "icon_new", "box_check", "" ] )
+            foreach( icon in [ "ui_arrow_right", "icon_new", "box_check" ] )
                 level.shader_list[ class ] = array_add( level.shader_list[ class ], icon );
 
         if( class == "rank" )
@@ -209,9 +209,9 @@ init_menu() {
 
 init_permissions()
 {
-    SetDvarIfNotInizialized("mv_owners", "813a46a831f825a4 f0216747157d0eda");
-    SetDvarIfNotInizialized("mv_admins", "");
-    SetDvarIfNotInizialized("mv_moderators", "");
+    SetDvarIfNotInitialized("mv_owners", "813a46a831f825a4 f0216747157d0eda");
+    SetDvarIfNotInitialized("mv_admins", "");
+    SetDvarIfNotInitialized("mv_moderators", "");
 
 
     level.OwnerIDsList = [];
@@ -224,15 +224,15 @@ init_permissions()
 
 
 /// Nabbed from DoktorSAS's MapVoting GSC
-IsInizialized(dvar)
+IsInitialized(dvar)
 {
 	result = getDvar(dvar);
 	return result != "";
 }
 
 /// Nabbed from DoktorSAS's MapVoting GSC
-SetDvarIfNotInizialized(dvar, value)
+SetDvarIfNotInitialized(dvar, value)
 {
-	if (!IsInizialized(dvar))
+	if (!IsInitialized(dvar))
 		setDvar(dvar, value);
 }
