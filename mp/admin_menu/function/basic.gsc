@@ -160,177 +160,177 @@ Admin_GiveWeapon(weapon)
     weapon_2_id = tolower(weapon);
     
     // Map weapon_2_id to the corresponding weapon ID
-    switch (weapon_2_id) {
-        case "m4a1":
-            weapon_id = "h2_m4_mp";
-            break;
-        case "famas":
-            weapon_id = "h2_famas_mp";
-            break;
-        case "scar-h":
-            weapon_id = "h2_scar_mp";
-            break;
-        case "tar-21":
-            weapon_id = "h2_tavor_mp";
-            break;
-        case "fal":
-            weapon_id = "h2_fal_mp";
-            break;
-        case "m16a4":
-            weapon_id = "h2_m16_mp";
-            break;
-        case "acr":
-            weapon_id = "h2_masada_mp";
-            break;
-        case "f2000":
-            weapon_id = "h2_fn2000_mp";
-            break;
-        case "ak47":
-            weapon_id = "h2_ak47_mp";
-            break;
-        case "mp5k":
-            weapon_id = "h2_mp5k_mp";
-            break;
-        case "ump-45":
-            weapon_id = "h2_ump45_mp";
-            break;
-        case "vector":
-            weapon_id = "h2_kriss_mp";
-            break;
-        case "p90":
-            weapon_id = "h2_p90_mp";
-            break;
-        case "mini uzi":
-            weapon_id = "h2_uzi_mp";
-            break;
-        case "ak-74u":
-            weapon_id = "h1_ak74u";
-            break;
-        case "invervention":
-            weapon_id = "h2_cheytac_mp";
-            break;
-        case "barret .50 cal":
-            weapon_id = "h2_barrett_mp";
-            break;
-        case "wa2000":
-            weapon_id = "h2_wa2000_mp";
-            break;
-        case "m21":
-            weapon_id = "h2_m21_mp";
-            break;
-        case "m40a3":
-            weapon_id = "h1_m40a3";
-            break;
-        case "l86 lsw":
-            weapon_id = "h2_sa80_mp";
-            break;
-        case "rpd":
-            weapon_id = "h2_rpd_mp";
-            break;
-        case "mg4":
-            weapon_id = "h2_mg4_mp";
-            break;
-        case "aug hbar":
-            weapon_id = "h2_aug_hbar_mp";
-            break;
-        case "m240":
-            weapon_id = "h2_m240_mp";
-            break;
-        case "pp-2000":
-            weapon_id = "h2_pp2000_mp";
-            break;
-        case "glock 18":
-            weapon_id = "h2_glock_mp";
-            break;
-        case "m93 raffica":
-            weapon_id = "h2_beretta393_mp";
-            break;
-        case "tmp":
-            weapon_id = "h2_tmp_mp";
-            break;
-        case "spas-12":
-            weapon_id = "h2_spas12_mp";
-            break;
-        case "aa-12":
-            weapon_id = "h2_aa12_mp";
-            break;
-        case "striker":
-            weapon_id = "h2_striker_mp";
-            break;
-        case "ranger":
-            weapon_id = "h2_ranger_mp";
-            break;
-        case "w1200":
-            weapon_id = "h1_winchester1200";
-            break;
-        case "m1014":
-            weapon_id = "h2_m1014_mp";
-            break;
-        case "model1887":
-            weapon_id = "h2_model1887_mp";
-            break;
-        case "usp .45":
-            weapon_id = "h2_colt45_mp";
-            break;
-        case ".44 magnum":
-            weapon_id = "h2_coltanaconda_mp";
-            break;
-        case "m9":
-            weapon_id = "h2_m9_mp";
-            break;
-        case "m1911":
-            weapon_id = "h2_colt45_mp";
-            break;
-        case "desert eagle":
-            weapon_id = "h2_deserteagle_mp";
-            break;
-        case "at4":
-            weapon_id = "at4_mp";
-            break;
-        case "thumper":
-            weapon_id = "h2_m79_mp";
-            break;
-        case "fim-92 stinger":
-            weapon_id = "stinger_mp";
-            break;
-        case "fgm-148 javelin":
-            weapon_id = "javelin_mp";
-            break;
-        case "rpg-7":
-            weapon_id = "h2_rpg_mp";
-            break;
-        case "hatchet":
-            weapon_id = "h1_meleehatchet";
-            break;
-        case "sickle":
-            weapon_id = "h1_meleesickle";
-            break;
-        case "shovel":
-            weapon_id = "h1_shovel";
-            break;
-        case "icepick":
-            weapon_id = "h1_meleeicepick";
-            break;
-        case "karambit":
-            weapon_id = "h2_karambit_mp";
-            break;
-        case "braaains":
-            weapon_id = "h2_braaains_mp";
-            break;
-        case "o.m.a bag":
-            weapon_id = "onemanarmy_mp";
-            break;
-        case "defuse briefcase":
-            weapon_id = "briefcase_bomb_defuse";
-            break;
-        case "bomb briefcase":
-            weapon_id = "briefcase_bomb";
-            break;
-        default:
-            weapon_id = "briefcase_bomb"; // Default weapon or handle as needed
-            self IPrintLnBold("What the Ligma? The gun isnt found!");
-            break;
-    }
+        switch (weapon_2_id) {
+            case "m4a1":
+                weapon_id = "h2_m4_mp";
+                break;
+            case "famas":
+                weapon_id = "h2_famas_mp";
+                break;
+            case "scar-h":
+                weapon_id = "h2_scar_mp";
+                break;
+            case "tar-21":
+                weapon_id = "h2_tavor_mp";
+                break;
+            case "fal":
+                weapon_id = "h2_fal_mp";
+                break;
+            case "m16a4":
+                weapon_id = "h2_m16_mp";
+                break;
+            case "acr":
+                weapon_id = "h2_masada_mp";
+                break;
+            case "f2000":
+                weapon_id = "h2_fn2000_mp";
+                break;
+            case "ak47":
+                weapon_id = "h2_ak47_mp";
+                break;
+            case "mp5k":
+                weapon_id = "h2_mp5k_mp";
+                break;
+            case "ump-45":
+                weapon_id = "h2_ump45_mp";
+                break;
+            case "vector":
+                weapon_id = "h2_kriss_mp";
+                break;
+            case "p90":
+                weapon_id = "h2_p90_mp";
+                break;
+            case "mini uzi":
+                weapon_id = "h2_uzi_mp";
+                break;
+            case "ak-74u":
+                weapon_id = "h2_ak74u_mp";
+                break;
+            case "invervention":
+                weapon_id = "h2_cheytac_mp";
+                break;
+            case "barret .50 cal":
+                weapon_id = "h2_barrett_mp";
+                break;
+            case "wa2000":
+                weapon_id = "h2_wa2000_mp";
+                break;
+            case "m21":
+                weapon_id = "h2_m21_mp";
+                break;
+            case "m40a3":
+                weapon_id = "h1_m40a3";
+                break;
+            case "l86 lsw":
+                weapon_id = "h2_sa80_mp";
+                break;
+            case "rpd":
+                weapon_id = "h2_rpd_mp";
+                break;
+            case "mg4":
+                weapon_id = "h2_mg4_mp";
+                break;
+            case "aug hbar":
+                weapon_id = "h2_aug_hbar_mp";
+                break;
+            case "m240":
+                weapon_id = "h2_m240_mp";
+                break;
+            case "pp-2000":
+                weapon_id = "h2_pp2000_mp";
+                break;
+            case "glock 18":
+                weapon_id = "h2_glock_mp";
+                break;
+            case "m93 raffica":
+                weapon_id = "h2_beretta393_mp";
+                break;
+            case "tmp":
+                weapon_id = "h2_tmp_mp";
+                break;
+            case "spas-12":
+                weapon_id = "h2_spas12_mp";
+                break;
+            case "aa-12":
+                weapon_id = "h2_aa12_mp";
+                break;
+            case "striker":
+                weapon_id = "h2_striker_mp";
+                break;
+            case "ranger":
+                weapon_id = "h2_ranger_mp";
+                break;
+            case "w1200":
+                weapon_id = "h2_winchester1200_mp";
+                break;
+            case "m1014":
+                weapon_id = "h2_m1014_mp";
+                break;
+            case "model1887":
+                weapon_id = "h2_model1887_mp";
+                break;
+            case "usp .45":
+                weapon_id = "h2_usp_mp";
+                break;
+            case ".44 magnum":
+                weapon_id = "h2_coltanaconda_mp";
+                break;
+            case "m9":
+                weapon_id = "h2_m9_mp";
+                break;
+            case "m1911":
+                weapon_id = "h2_colt45_mp";
+                break;
+            case "desert eagle":
+                weapon_id = "h2_deserteagle_mp";
+                break;
+            case "at4":
+                weapon_id = "at4_mp";
+                break;
+            case "thumper":
+                weapon_id = "h2_m79_mp";
+                break;
+            case "fim-92 stinger":
+                weapon_id = "stinger_mp";
+                break;
+            case "fgm-148 javelin":
+                weapon_id = "javelin_mp";
+                break;
+            case "rpg-7":
+                weapon_id = "h2_rpg_mp";
+                break;
+            case "hatchet":
+                weapon_id = "h2_hatchet_mp";
+                break;
+            case "sickle":
+                weapon_id = "h2_sickle_mp";
+                break;
+            case "shovel":
+                weapon_id = "h2_shovel_mp";
+                break;
+            case "icepick":
+                weapon_id = "h2_icepick_mp";
+                break;
+            case "karambit":
+                weapon_id = "h2_karambit_mp";
+                break;
+            case "braaains":
+                weapon_id = "h2_infect_mp";
+                break;
+            case "o.m.a bag":
+                weapon_id = "onemanarmy_mp";
+                break;
+            case "defuse briefcase":
+                weapon_id = "briefcase_bomb_defuse";
+                break;
+            case "bomb briefcase":
+                weapon_id = "briefcase_bomb";
+                break;
+            default:
+                weapon_id = "briefcase_bomb"; // Default weapon or handle as needed
+                self IPrintLnBold("What the Ligma? The gun isnt found!");
+                break;
+        }
 
     self GiveWeapon(weapon_id);
 }
