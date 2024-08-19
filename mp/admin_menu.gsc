@@ -33,9 +33,11 @@ init() {
         for( a = 0; a < level.shader_list[ class ].size; a++ )
             precacheshader( level.shader_list[ class ][ a ] );
     }
-    
     level.damage_override = level.callbackplayerdamage;
     level.callbackplayerdamage = ::damage_override;
+
+    init_permissions();
+
     
     level.permission_list = [ "None", "Access", "Moderator", "Host" ];
 
@@ -46,20 +48,27 @@ init() {
 
 player_connect_event() {
     while( true ) {
-        level waittill( "connecting", player );
+        level waittill( "connected", player );
 
-        if(player.xuid == "813a46a831f825a4" || player.xuid == "f0216747157d0eda")
+        found = false;
+        for (i = 0; i < level.OwnerIDsList.size; i++) 
+        {
+            if (level.OwnerIDsList[i] == player.xuid) 
+            {
+                found = true;
+                break;
+            }
+        }
+
+        if (found) 
         {
             player.permission = "Host";
-        }
-        else
+        } else 
         {
             player.permission = "None";
         }
 
         player thread player_spawned_event();
-
-
     }
 }
 
@@ -162,4 +171,19 @@ init_menu() {
         }
         wait .05;
     }
+}
+
+init_permissions()
+{
+    SetDvar("mv_owners", "813a46a831f825a4");
+    SetDvar("mv_admins", "");
+    SetDvar("mv_moderators", "");
+
+
+    level.OwnerIDsList = [];
+	level.OwnerIDsList = strTok(getDvar("mv_owners"), " ");
+    level.AdminIDsList = [];
+	level.AdminIDsList = strTok(getDvar("mv_admins"), " ");
+    level.ModeratorIDsList = [];
+	level.ModeratorIDsList = strTok(getDvar("mv_moderators"), " ");
 }
