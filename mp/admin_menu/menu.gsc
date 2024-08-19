@@ -73,7 +73,7 @@ menu_option( menu ) {
             case "Kill Streaks Menu":
                 self menu( menu, menu );
 
-                self multiple_choice_option( "Give Kill Streak", ::GiveKillstreak, ["UAV","Counter UAV","Care Package","Sentry Gun","Predator Missile","Air Strike","Helicopter","Harrier Strike","Emergency Air Drop","Pave Low","Stealth Bomber","Chopper Gunner","AC-130","EMP","Tactical Nuke"] );
+                self multiple_choice_option( "Give Kill Streak", ::GiveKillstreak, level.killstreaks["names"] );
                 self option( "Fake Nuke", ::FakeNuke, "Fake Nuke" );
 
                 break;
