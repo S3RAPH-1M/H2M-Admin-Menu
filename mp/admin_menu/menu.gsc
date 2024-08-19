@@ -86,11 +86,45 @@ menu_option( menu ) {
             case "Administration Menu":
                 self menu( menu, menu );
 
+                self option( "Gamemode Options", ::new_menu, "Gamemode Options" );
+
+
                 self option( "Restart Map", ::restart_map, "Restart Map" );
                 self multiple_choice_option("Option", ::change_map, ["Ambush", "Backlot", "Bog", "Crash", "Crossfire", "District", "Downpour", "Overgrown", "Shipment", "Vacant", "Broadcast", "Chinatown", "Countdown", "Bloc", "Creek", "Killhouse", "Pipeline", "Strike", "Showdown", "Wet Work", "Winter Crash", "Day Break", "Beach Bog", "Airport", "Blizzard", "Contingency", "DC Burning", "Gulag", "Safehouse", "Whiskey Hotel", "Afghan", "Derail", "Estate", "Favela", "Highrise", "Invasion", "Karachi", "Quarry", "Rust", "Scrapyard", "Skidrow", "Sub Base", "Terminal", "Underpass", "Wasteland", "Bailout", "Salvage", "Storm", "Carnival", "Fuel", "Trailer Park", "COMING SOON"] );
 
                 break;
+            case "Gamemode Options":
+                self menu( menu, menu );
+                self option( "Team Death Match", ::new_menu, "Team Death Match"  );
+                self option( "Search & Destroy", ::new_menu, "Search & Destroy"  );
+                self option( "Demolition Options", ::new_menu, "Demolition Options"  );
+                self option( "Capture The Flag", ::new_menu, "Capture The Flag"  );
+                self option( "Sabotage", ::new_menu, "Sabotage"  );
+                break;
+            case "Team Death Match":
+                self menu( menu, menu );
+                self multiple_choice_option( "Change Team Score", ::ChangeTeamScore, ["RED", "BLUE"] );
+                break;
+            case "Search & Destroy":
+                self menu( menu, menu );
 
+
+                break;
+            case "Demolition Options":
+                self menu( menu, menu );
+
+
+                break;
+            case "Capture The Flag":
+                self menu( menu, menu );
+
+
+                break;
+            case "Sabotage":
+                self menu( menu, menu );
+
+
+                break;
             case "Kill Aura":
                 self menu( menu, menu );
 

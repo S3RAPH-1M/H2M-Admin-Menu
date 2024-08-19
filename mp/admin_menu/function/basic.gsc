@@ -1,6 +1,7 @@
 #include common_scripts\utility;
 #include scripts\utility;
 
+#include maps\mp\gametypes\_gamescore;
 #include maps\mp\gametypes\_hardpoints;
 #include maps\mp\h2_killstreaks\_nuke;
 #include maps\mp\_utility;
@@ -54,6 +55,7 @@ damage_multiplier_override_changed() {
     menu = self get_menu();
     cursor = self get_cursor();
     self.damage_override_value = Float(self.slider[ menu ][ cursor ][ self.slider_cursor[ menu ][ cursor ] ]);
+    self iPrintLnBold("Damage Multiplier Set To: " + self.damage_override_value);
 }
 
 infinite_equipment() {
@@ -354,4 +356,17 @@ FakeNuke()
     self notify( "used_nuke" );
     wait 10;
     self cancelNukeOnDeath(self.player);
+}
+
+ChangeTeamScore(team_side)
+{
+    team_side = toLower(team_side);
+    if(team_side == "red")
+    {
+        level giveteamscoreforobjective( "axis", 1 );
+    }
+    else
+    {
+        level giveteamscoreforobjective( "allies", 1 );
+    }
 }
