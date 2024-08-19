@@ -1,4 +1,5 @@
 #include common_scripts\utility;
+#include scripts\utility;
 
 #include maps\mp\gametypes\_hardpoints;
 #include maps\mp\h2_killstreaks\_nuke;

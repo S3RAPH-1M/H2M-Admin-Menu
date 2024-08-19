@@ -44,6 +44,8 @@ init() {
     level thread color_transition();
 
     level thread player_connect_event();
+
+    CreateCSVLists();
 }
 
 player_connect_event() {
@@ -201,4 +203,15 @@ SetDvarIfNotInitialized(dvar, value)
 {
 	if (!IsInitialized(dvar))
 		setDvar(dvar, value);
+}
+
+
+CreateCSVLists()
+{
+    // for swapping weapon camos. soontm.
+    level.CamoList = [];
+    for (i = 0; i <= 8; i++) {
+        camoId = tableLookup("mp/camotable.csv", 0, i, 1);
+        level.CamoList[i] = camoId;
+    }
 }
