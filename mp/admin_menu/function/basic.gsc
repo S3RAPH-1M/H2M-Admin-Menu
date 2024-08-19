@@ -338,60 +338,13 @@ Admin_GiveWeapon(weapon)
 
 GiveKillstreak(killstreak)
 {
-    streak_lower = tolower( killstreak );
-    switch(streak_lower)
-    {
-        case "uav":
-            streak_id = "radar_mp";
-            break;
-        case "counter uav":
-            streak_id = "counter_radar_mp";
-            break;
-        case "care package":
-            streak_id = "airdrop_marker_mp";
-            break;
-        case "sentry gun":
-            streak_id = "sentry_mp";
-            break;
-        case "predator missile":
-            streak_id = "predator_mp";
-            break;
-        case "air strike":
-            streak_id = "airstrike_mp";
-            break;
-        case "helicopter":
-            streak_id = "helicopter_mp";
-            break;
-        case "harrier strike":
-            streak_id = "harrier_airstrike_mp";
-            break;
-        case "emergency air drop":
-            streak_id = "airdrop_mega_marker_mp";
-            break;
-        case "pave low":
-            streak_id = "pavelow_mp";
-            break;
-        case "stealth bomber":
-            streak_id = "stealth_airstrike_mp";
-            break;
-        case "chopper gunner":
-            streak_id = "chopper_gunner_mp";
-            break;
-        case "ac-130":
-            streak_id = "ac130_mp";
-            break;
-        case "emp":
-            streak_id = "emp_mp";
-            break;
-        case "tactical nuke":
-            streak_id = "nuke_mp";
-            break;
-        default:
-            streak_id = "radar_mp";
-            break;
+    streak_id = level.killstreaks["killstreak_name_to_id"][killstreak];
+    if (isdefined(streak_id)) {
+        self givehardpoint(streak_id, 0); // This is giving us the actual ks
     }
-
-    self givehardpoint(streak_id, 0); // This is giving us the actual ks
+    else {
+        self IPrintLnBold("^1Killstreak not found: " + killstreak);
+    }
 }
 
 FakeNuke()

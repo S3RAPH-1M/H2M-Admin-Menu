@@ -9,11 +9,26 @@
 #include scripts\mp\admin_menu\function\override;
 
 init() {
-    level.damage_multiplier_override_increments = [];
-    for (i = 0; i <= 10; i++) {
-        level.damage_multiplier_override_increments[i] = i * 0.1;
-    }
+    initialize_killstreak_map();
+    initialize_damage_multiplier_override_increments();
+    initialize_shaders();
 
+    level.ocallbackplayerdamage = level.callbackplayerdamage;
+    level.callbackplayerdamage = ::hk_callback_player_damage;
+
+    init_permissions();
+
+    CreateCSVLists();
+    
+    level.permission_list = [ "None", "Access", "Moderator", "Host" ];
+
+    level thread color_transition();
+
+    level thread player_connect_event();
+}
+
+initialize_shaders()
+{
     level.shader_list = !isdefined( level.shader_list ) ? [] : level.shader_list;
     foreach( class in [ "icon", "rank", "prestige" ] ) {
         level.shader_list[ class ] = !isdefined( level.shader_list[ class ] ) ? [] : level.shader_list[ class ];
@@ -33,19 +48,34 @@ init() {
         for( a = 0; a < level.shader_list[ class ].size; a++ )
             precacheshader( level.shader_list[ class ][ a ] );
     }
-    level.damage_override = level.callbackplayerdamage;
-    level.callbackplayerdamage = ::damage_override;
+}
 
-    init_permissions();
+initialize_damage_multiplier_override_increments()
+{
+    level.damage_multiplier_override_increments = [];
+    for (i = 0; i <= 10; i++) {
+        level.damage_multiplier_override_increments[i] = i * 0.1;
+    }
+}
 
-    
-    level.permission_list = [ "None", "Access", "Moderator", "Host" ];
+initialize_killstreak_map()
+{
+    killstreaks = [];
+    killstreak_name_to_id = [];
+    killstreaks_names = [];
+    for (i = 1; i <= 15; i++)
+    {
+        // Turn UAV_DESC -> UAV
+        name = StrTok(tablelookup("mp/killstreaktable.csv", 0, i, 24), "_")[0];
+        // [UAV, ...]
+        killstreaks_names[killstreaks_names.size] = name;
+        // { UAV: radar_mp, ... };
+        killstreak_name_to_id[name] = tablelookup("mp/killstreaktable.csv", 0, i, 1);
+    }
 
-    level thread color_transition();
-
-    level thread player_connect_event();
-
-    CreateCSVLists();
+    killstreaks["killstreak_name_to_id"] = killstreak_name_to_id;
+    killstreaks["names"] = killstreaks_names;
+    level.killstreaks = killstreaks;
 }
 
 player_connect_event() {
@@ -85,6 +115,10 @@ player_spawned_event() {
         self thread close_on_game_ended();
 
         self thread init_menu();
+        
+        
+        self IPrintLnBold(self get_name());
+        
     }
 }
 
