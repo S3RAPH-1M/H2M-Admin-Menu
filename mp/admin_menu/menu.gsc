@@ -46,30 +46,42 @@ menu_option( menu ) {
                 break;
             case "Give Weapons":
                 self menu( menu, menu );
-
-                self option( "Assault Rifles", ::new_menu, "Assault Rifles" );
-                self option( "Sub Machine Guns", ::new_menu, "Sub Machine Guns" );
-                self option( "Sniper Rifles", ::new_menu, "Sniper Rifles" );
-                self option( "Light Machine Guns", ::new_menu, "Light Machine Guns" );
-                self option( "Machine Pistols", ::new_menu, "Machine Pistols" );
-                self option( "Shotguns", ::new_menu, "Shotguns" );
-                self option( "Handguns", ::new_menu, "Handguns" );
-                self option( "Launchers", ::new_menu, "Launchers" );
-                self option( "Melee Weapons", ::new_menu, "Melee Weapons");
-                self option( "GameMode Weapons / Misc", ::new_menu, "GameMode Weapons / Misc" );
+                self option( "Primary Weapons", ::new_menu, "Primary Weapons" );
+                self option( "Secondary Weapons", ::new_menu, "Secondary Weapons" );
+                self option( "Misc Weapons", ::new_menu, "Misc Weapons" );
+                break;
+            case "Primary Weapons":
+                self menu( menu, menu );
+                self toggle( "Assault Rifles", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["M4A1", "FAMAS", "SCAR-H", "TAR-21", "FAL", "M16A4", "ACR", "F2000", "AK47"] );
+                self toggle( "Sub Machine Guns", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["MP5K", "UMP-45", "VECTOR", "P90", "MINI UZI", "AK-74U"] );
+                self toggle( "Sniper Rifles", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["INVERVENTION", "BARRET .50 CAL", "WA2000", "M21", "M40A3"] );
+                self toggle( "Light Machine Guns", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["L86 LSW", "RPD", "MG4", "AUG HBAR", "M240"] );
+                break;
+            case "Secondary Weapons":
+                self menu( menu, menu );
+                self toggle( "Machine Pistols", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["PP-2000", "GLOCK 18", "M93 RAFFICA", "TMP"] );
+                self toggle( "Shotguns", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["SPAS-12", "AA-12", "STRIKER", "RANGER", "W1200", "M1014", "MODEL1887"] );
+                self toggle( "Handguns", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["USP .45", ".44 MAGNUM", "M9", "M1911", "DESERT EAGLE"] );
+                self toggle( "Launchers", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["AT4", "THUMPER", "FIM-92 STINGER", "FGM-148 JAVELIN", "RPG-7"] );
+                self toggle( "Melee Weapons", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["HATCHET", "SICKLE", "SHOVEL", "ICEPICK", "KARAMBIT", "BRAAAINS"]);
+                break;
+            case "Misc Weapons":
+                self menu( menu, menu );
+                self toggle( "GameMode Weapons Misc", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["O.M.A BAG", "Defuse Briefcase", "Bomb Briefcase"] );
+                self option( "Kill Streak Weapons", ::new_menu, "Kill Streak Weapons" );
                 break;
             case "Kill Streaks Menu":
                 self menu( menu, menu );
 
                 self toggle( "Give Kill Streak", ::GiveKillstreak, self.give_killstreak, ["UAV","Counter UAV","Care Package","Sentry Gun","Predator Missile","Air Strike","Helicopter","Harrier Strike","Emergency Air Drop","Pave Low","Stealth Bomber","Chopper Gunner","AC-130","EMP","Tactical Nuke"] );
                 self option( "Fake Nuke", ::FakeNuke, "Fake Nuke" );
-                self option( "Real Nuke", ::RealNuke, "Real Nuke" );
 
                 break;
-            case "Assault Rifles":
+
+            case "Kill Streak Weapons":
                 self menu( menu, menu );
 
-                self option( "AK-47", ::AdminGiveWeapon, "AK-47" );
+                self toggle( "AC-130", ::AdminGiveAC130, self.give_ac130, ["25 MM","40 MM","105 MM"] );
                 break;
             case "Administration Menu":
                 self menu( menu, menu );
@@ -83,7 +95,7 @@ menu_option( menu ) {
                 self menu( menu, menu );
 
                 self toggle( "Kill Aura", ::kill_aura, self.kill_aura );
-                self slider( "Aura Range", undefined, 75, 2250, 75, 225 );
+                self slider( "Max Aura", undefined, 75, 2250, 75, 225 );
 
                 break;
             case "Noclip":
@@ -143,7 +155,7 @@ menu_option_player( menu, player ) {
     switch( menu ) {
         case "Options":
             self menu( menu, player get_name() );
-
+            
             break;
         default:
             empty = true;
