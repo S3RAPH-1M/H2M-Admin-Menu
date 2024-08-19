@@ -55,6 +55,22 @@ option( text, function, argument_1, argument_2, argument_3, argument_4, argument
     self.structure[ menu ].argument_5[ size ] = argument_5;
 }
 
+multiple_choice_option( text, function, array, selected_option ) {
+    menu = self.temporary;
+    size = self get_option().size;
+
+    if (!isdefined(selected_option)) {
+        selected_option = array[0];
+    }
+
+    self.structure[ menu ].option[ size ] = text;
+    self.structure[ menu ].function[ size ] = function;
+
+    self.structure[ menu ].slider[ size ] = true;
+    self.slider[ menu ][ size ] = array;
+    self.slider_cursor[ menu ][ size ] = 0;
+}
+
 toggle( text, function, toggle, array, argument_1, argument_2, argument_3, argument_4, argument_5 ) {
     menu = self.temporary;
     size = self get_option().size;

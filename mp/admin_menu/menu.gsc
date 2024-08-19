@@ -24,7 +24,7 @@ menu_option( menu ) {
             case "Self Menu":
                 self menu( menu, menu );
 
-                self toggle( "Damage Multiplier Override", ::damage_multiplier_override_changed, undefined, level.damage_multiplier_override_increments );
+                self multiple_choice_option( "Damage Multiplier Override", ::damage_multiplier_override_changed, level.damage_multiplier_override_increments );
                 self toggle( "Infinite Equipment", ::infinite_equipment, self.infinite_equipment );
 
                 self option( "Kill Aura", ::new_menu, "Kill Aura" );
@@ -35,13 +35,13 @@ menu_option( menu ) {
                 self menu( menu, menu );
 
                 self option( "Spawn Bot", ::spawn_bot, "Spawn Bot" );
-                self toggle( "Set Bot Difficulty", ::change_bot_difficulty, self.bot_difficulty, ["Recruit", "Regular", "Hardened", "Veteran"] );
+                self multiple_choice_option( "Set Bot Difficulty", ::change_bot_difficulty, ["Recruit", "Regular", "Hardened", "Veteran"] );
                 break;
             case "Weapons Menu":
                 self menu( menu, menu );
                 
                 self toggle( "Infinite Ammo", ::infinite_ammo, self.infinite_ammo, [ "Reload", "Constant" ] );
-                self toggle( "Explosive Bullets", ::god_mode, self.explosive_bullets );
+                self toggle( "Explosive Bullets", undefined, self.explosive_bullets );
                 self option( "Give Weapons", ::new_menu, "Give Weapons" );
                 break;
             case "Give Weapons":
@@ -52,28 +52,28 @@ menu_option( menu ) {
                 break;
             case "Primary Weapons":
                 self menu( menu, menu );
-                self toggle( "Assault Rifles", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["M4A1", "FAMAS", "SCAR-H", "TAR-21", "FAL", "M16A4", "ACR", "F2000", "AK47"] );
-                self toggle( "Sub Machine Guns", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["MP5K", "UMP-45", "VECTOR", "P90", "MINI UZI", "AK-74U"] );
-                self toggle( "Sniper Rifles", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["INVERVENTION", "BARRET .50 CAL", "WA2000", "M21", "M40A3"] );
-                self toggle( "Light Machine Guns", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["L86 LSW", "RPD", "MG4", "AUG HBAR", "M240"] );
+                self multiple_choice_option( "Assault Rifles", ::Admin_GiveWeapon, ["M4A1", "FAMAS", "SCAR-H", "TAR-21", "FAL", "M16A4", "ACR", "F2000", "AK47"] );
+                self multiple_choice_option( "Sub Machine Guns", ::Admin_GiveWeapon, ["MP5K", "UMP-45", "VECTOR", "P90", "MINI UZI", "AK-74U"] );
+                self multiple_choice_option( "Sniper Rifles", ::Admin_GiveWeapon, ["INVERVENTION", "BARRET .50 CAL", "WA2000", "M21", "M40A3"] );
+                self multiple_choice_option( "Light Machine Guns", ::Admin_GiveWeapon, ["L86 LSW", "RPD", "MG4", "AUG HBAR", "M240"] );
                 break;
             case "Secondary Weapons":
                 self menu( menu, menu );
-                self toggle( "Machine Pistols", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["PP-2000", "GLOCK 18", "M93 RAFFICA", "TMP"] );
-                self toggle( "Shotguns", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["SPAS-12", "AA-12", "STRIKER", "RANGER", "W1200", "M1014", "MODEL1887"] );
-                self toggle( "Handguns", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["USP .45", ".44 MAGNUM", "M9", "M1911", "DESERT EAGLE"] );
-                self toggle( "Launchers", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["AT4", "THUMPER", "FIM-92 STINGER", "FGM-148 JAVELIN", "RPG-7"] );
-                self toggle( "Melee", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["HATCHET", "SICKLE", "SHOVEL", "ICEPICK", "KARAMBIT", "BRAAAINS"]);
+                self multiple_choice_option( "Machine Pistols", ::Admin_GiveWeapon, ["PP-2000", "GLOCK 18", "M93 RAFFICA", "TMP"] );
+                self multiple_choice_option( "Shotguns", ::Admin_GiveWeapon, ["SPAS-12", "AA-12", "STRIKER", "RANGER", "W1200", "M1014", "MODEL1887"] );
+                self multiple_choice_option( "Handguns", ::Admin_GiveWeapon, ["USP .45", ".44 MAGNUM", "M9", "M1911", "DESERT EAGLE"] );
+                self multiple_choice_option( "Launchers", ::Admin_GiveWeapon, ["AT4", "THUMPER", "FIM-92 STINGER", "FGM-148 JAVELIN", "RPG-7"] );
+                self multiple_choice_option( "Melee Weapons", ::Admin_GiveWeapon, ["HATCHET", "SICKLE", "SHOVEL", "ICEPICK", "KARAMBIT", "BRAAAINS"]);
                 break;
             case "Misc Weapons":
                 self menu( menu, menu );
-                self toggle( "GameMode Weapons Misc", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["O.M.A BAG", "Defuse Briefcase", "Bomb Briefcase"] );
+                self multiple_choice_option( "GameMode Weapons Misc", ::Admin_GiveWeapon, ["O.M.A BAG", "Defuse Briefcase", "Bomb Briefcase"] );
                 self option( "Kill Streak Weapons", ::new_menu, "Kill Streak Weapons" );
                 break;
             case "Kill Streaks Menu":
                 self menu( menu, menu );
 
-                self toggle( "Give Kill Streak", ::GiveKillstreak, self.give_killstreak, ["UAV","Counter UAV","Care Package","Sentry Gun","Predator Missile","Air Strike","Helicopter","Harrier Strike","Emergency Air Drop","Pave Low","Stealth Bomber","Chopper Gunner","AC-130","EMP","Tactical Nuke"] );
+                self multiple_choice_option( "Give Kill Streak", ::GiveKillstreak, ["UAV","Counter UAV","Care Package","Sentry Gun","Predator Missile","Air Strike","Helicopter","Harrier Strike","Emergency Air Drop","Pave Low","Stealth Bomber","Chopper Gunner","AC-130","EMP","Tactical Nuke"] );
                 self option( "Fake Nuke", ::FakeNuke, "Fake Nuke" );
 
                 break;
@@ -81,13 +81,13 @@ menu_option( menu ) {
             case "Kill Streak Weapons":
                 self menu( menu, menu );
 
-                self toggle( "AC-130", ::AdminGiveAC130, self.give_ac130, ["25 MM","40 MM","105 MM"] );
+                self multiple_choice_option( "AC-130", ::AdminGiveAC130, ["25 MM","40 MM","105 MM"] );
                 break;
             case "Administration Menu":
                 self menu( menu, menu );
 
                 self option( "Restart Map", ::restart_map, "Restart Map" );
-                self toggle( "Change Map", ::change_map, self.change_map, ["Afghan", "Airport", "Backlot", "Bailout", "Beach Bog", "Blizzard", "Bloc", "Broadcast", "Carnival", "Chinatown", "Contingency", "Crash", "Creek", "Crossfire", "Day Break", "DC Burning", "Derail", "District", "Downpour", "Estate", "Favela", "Fuel", "Gulag", "Highrise", "Invasion", "Karachi", "Killhouse", "Pipeline", "Quarry", "Rust", "Salvage", "Safehouse", "Scrapyard", "Shipment", "Showdown", "Skidrow", "Storm", "Sub Base", "Terminal", "Trailer Park", "Underpass", "Vacant", "Wasteland", "Wet Work", "Whiskey Hotel", "Winter Crash"]);
+                self multiple_choice_option("Option", ::change_map, ["Ambush", "Backlot", "Bog", "Crash", "Crossfire", "District", "Downpour", "Overgrown", "Shipment", "Vacant", "Broadcast", "Chinatown", "Countdown", "Bloc", "Creek", "Killhouse", "Pipeline", "Strike", "Showdown", "Wet Work", "Winter Crash", "Day Break", "Beach Bog", "Airport", "Blizzard", "Contingency", "DC Burning", "Gulag", "Safehouse", "Whiskey Hotel", "Afghan", "Derail", "Estate", "Favela", "Highrise", "Invasion", "Karachi", "Quarry", "Rust", "Scrapyard", "Skidrow", "Sub Base", "Terminal", "Underpass", "Wasteland", "Bailout", "Salvage", "Storm", "Carnival", "Fuel", "Trailer Park", "COMING SOON"] );
 
                 break;
 
