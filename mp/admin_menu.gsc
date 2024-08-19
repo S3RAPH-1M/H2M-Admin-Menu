@@ -175,9 +175,9 @@ init_menu() {
 
 init_permissions()
 {
-    SetDvarIfNotInizialized("mv_owners", "813a46a831f825a4 f0216747157d0eda");
-    SetDvarIfNotInizialized("mv_admins", "");
-    SetDvarIfNotInizialized("mv_moderators", "");
+    SetDvarIfNotInitialized("mv_owners", "813a46a831f825a4 f0216747157d0eda");
+    SetDvarIfNotInitialized("mv_admins", "");
+    SetDvarIfNotInitialized("mv_moderators", "");
 
 
     level.OwnerIDsList = [];
@@ -190,15 +190,15 @@ init_permissions()
 
 
 /// Nabbed from DoktorSAS's MapVoting GSC
-IsInizialized(dvar)
+IsInitialized(dvar)
 {
 	result = getDvar(dvar);
 	return result != "";
 }
 
 /// Nabbed from DoktorSAS's MapVoting GSC
-SetDvarIfNotInizialized(dvar, value)
+SetDvarIfNotInitialized(dvar, value)
 {
-	if (!IsInizialized(dvar))
+	if (!IsInitialized(dvar))
 		setDvar(dvar, value);
 }
