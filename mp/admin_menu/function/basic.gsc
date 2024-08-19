@@ -247,7 +247,7 @@ Admin_GiveWeapon()
                 weapon_id = "h2_uzi_mp";
                 break;
             case "ak-74u":
-                weapon_id = "h1_ak74u";
+                weapon_id = "h2_ak74u_mp";
                 break;
             case "invervention":
                 weapon_id = "h2_cheytac_mp";
@@ -304,7 +304,7 @@ Admin_GiveWeapon()
                 weapon_id = "h2_ranger_mp";
                 break;
             case "w1200":
-                weapon_id = "h1_winchester1200";
+                weapon_id = "h2_winchester1200_mp";
                 break;
             case "m1014":
                 weapon_id = "h2_m1014_mp";
@@ -313,7 +313,7 @@ Admin_GiveWeapon()
                 weapon_id = "h2_model1887_mp";
                 break;
             case "usp .45":
-                weapon_id = "h2_colt45_mp";
+                weapon_id = "h2_usp_mp";
                 break;
             case ".44 magnum":
                 weapon_id = "h2_coltanaconda_mp";
@@ -343,22 +343,22 @@ Admin_GiveWeapon()
                 weapon_id = "h2_rpg_mp";
                 break;
             case "hatchet":
-                weapon_id = "h1_meleehatchet";
+                weapon_id = "h2_hatchet_mp";
                 break;
             case "sickle":
-                weapon_id = "h1_meleesickle";
+                weapon_id = "h2_sickle_mp";
                 break;
             case "shovel":
-                weapon_id = "h1_shovel";
+                weapon_id = "h2_shovel_mp";
                 break;
             case "icepick":
-                weapon_id = "h1_meleeicepick";
+                weapon_id = "h2_icepick_mp";
                 break;
             case "karambit":
                 weapon_id = "h2_karambit_mp";
                 break;
             case "braaains":
-                weapon_id = "h2_braaains_mp";
+                weapon_id = "h2_infect_mp";
                 break;
             case "o.m.a bag":
                 weapon_id = "onemanarmy_mp";
