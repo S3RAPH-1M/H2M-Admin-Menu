@@ -63,7 +63,7 @@ menu_option( menu ) {
                 self toggle( "Shotguns", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["SPAS-12", "AA-12", "STRIKER", "RANGER", "W1200", "M1014", "MODEL1887"] );
                 self toggle( "Handguns", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["USP .45", ".44 MAGNUM", "M9", "M1911", "DESERT EAGLE"] );
                 self toggle( "Launchers", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["AT4", "THUMPER", "FIM-92 STINGER", "FGM-148 JAVELIN", "RPG-7"] );
-                self toggle( "Melee Weapons", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["HATCHET", "SICKLE", "SHOVEL", "ICEPICK", "KARAMBIT", "BRAAAINS"]);
+                self toggle( "Melee", ::Admin_GiveWeapon, self.Admin_GiveWeapon, ["HATCHET", "SICKLE", "SHOVEL", "ICEPICK", "KARAMBIT", "BRAAAINS"]);
                 break;
             case "Misc Weapons":
                 self menu( menu, menu );
