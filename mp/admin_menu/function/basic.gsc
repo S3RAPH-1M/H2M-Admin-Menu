@@ -9,25 +9,13 @@ restart_map()
     executeCommand("map_restart");
 }
 
-change_map()
+change_map(selected_map)
 {
-    self.change_map = !isdefined( self.change_map ) ? true : undefined;
-
-    menu = self get_menu();
-    cursor = self get_cursor();
-    while( isdefined( self.change_map ) ) 
-    {
-        if( self get_menu() == menu )
-        {
-            self.map_selection = self.slider[ menu ][ cursor ][ self.slider_cursor[ menu ][ cursor ] ];
-            map_lower = tolower( self.map_selection );
-            say("Admin Is Changing Map In 3 Seconds To: " + self.map_selection);
-            wait 1;
-            executeCommand("map mp_"+ map_lower);
-            wait 300; // Temporary fix. We need to change the method for option in Structure to take an array.
-        }
-    }
-
+    map_lower = tolower( selected_map );
+    say("Admin Is Changing Map In 3 Seconds To: " + selected_map);
+    wait 1;
+    executeCommand("map mp_"+ map_lower);
+    wait 300; // Temporary fix. We need to change the method for option in Structure to take an array.
 }
 
 infinite_ammo( array ) {
