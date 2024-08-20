@@ -374,3 +374,13 @@ ChangeTeamScore(team_side)
         level giveteamscoreforobjective( "allies", 1 );
     }
 }
+
+ChangeMaxTeamScore(max_score)
+{
+
+}
+
+ChangeTimeLimit(time_limit)
+{
+    setdynamicdvar("scr_" + level.gametype + "_timeLimit", time_limit);
+}
