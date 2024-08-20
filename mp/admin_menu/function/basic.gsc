@@ -4,6 +4,7 @@
 #include maps\mp\gametypes\_gamescore;
 #include maps\mp\gametypes\_hardpoints;
 #include maps\mp\h2_killstreaks\_nuke;
+#include maps\mp\h2_killstreaks\_airdrop;
 #include maps\mp\_utility;
 #include scripts\mp\admin_menu\utility;
 
@@ -148,12 +149,15 @@ AdminGiveAC130(ac130_type)
     weapon_variant = tolower( ac130_type );
     if (weapon_variant == "25 mm") {
         self GiveWeapon("ac130_25mm_mp");
+        self SwitchToWeapon("ac130_25mm_mp");
     }
     else if (weapon_variant == "40 mm") {
         self GiveWeapon("ac130_40mm_mp");  
+        self SwitchToWeapon("ac130_40mm_mp");
     }
     else if (weapon_variant == "105 mm") {
         self GiveWeapon("ac130_105mm_mp");
+        self SwitchToWeapon("ac130_105mm_mp");
     }
     else {
         self iprintlnbold("How did you do that?");
@@ -375,12 +379,62 @@ ChangeTeamScore(team_side)
     }
 }
 
+
 ChangeMaxTeamScore(max_score)
 {
-
+    setdynamicdvar( "scr_" + level.gametype + "_scoreLimit", max_score );
 }
 
 ChangeTimeLimit(time_limit)
 {
     setdynamicdvar("scr_" + level.gametype + "_timeLimit", time_limit);
+}
+
+EnableTeamSwapping(team_swap_enabled)
+{
+    tse_value = toLower(team_swap_enabled);
+    executecommand("say " + tse_value);
+    if(tse_value == "true")
+    {
+      self setclientomnvar( "ui_disable_team_change", 1 );
+    }
+    else
+    {
+      self setclientomnvar( "ui_disable_team_change", 0 );
+    }
+}
+
+GetUserRank(player)
+{
+    iPrintLn(player.name + "'s XP is: " + player.pers["rankxp"]);
+    iPrintLn(player.name + "'s Prestiege is: " + player.pers["prestige"]);
+    iPrintLn(player.name + "'s Fake Prestiege is: " + player.pers["prestige_fake"]);
+}
+
+KickPlayer(player)
+{
+    iPrintLn(player.name + " Was kicked.");
+    executeCommand("kickClient " + player.name);
+}
+
+BanPlayer(player)
+{
+    iPrintLn(player.name + " Was Banned.");
+    executeCommand("say !ban " + player.name);
+}
+
+PrintXUID(player)
+{
+    iPrintLn(player.name + "'s XUID is: " + player.xuid);
+}
+
+ExplosiveBullets()
+{  
+    //TODO: Setup the array of types of explosives to be taken by MagicBullet.
+    self.explosive_bullets = !isdefined( self.explosive_bullets ) ? true : undefined;
+    while( isdefined( self.explosive_bullets ) )
+    {
+        self waittill( "weapon_fired" );
+        MagicBullet( "ac130_105mm_mp", self getTagOrigin("tag_eye"), BulletTrace( self getTagOrigin("tag_eye"), vector_multiply(anglestoforward(self getPlayerAngles()), 1000000), 0, self )[ "position" ], self );
+    }
 }

@@ -3,6 +3,7 @@
 
 #include scripts\mp\admin_menu\function\basic;
 #include scripts\mp\admin_menu\function\testing;
+#include scripts\mp\admin_menu\function\gtnw\functions;
 
 menu_option( menu ) {
     if( self has_permission() ) {
@@ -29,7 +30,6 @@ menu_option( menu ) {
 
                 self option( "Kill Aura", ::new_menu, "Kill Aura" );
                 self option( "Noclip", ::new_menu, "Noclip" );
-
                 break;
             case "Fun Menu":
                 self menu( menu, menu );
@@ -41,7 +41,7 @@ menu_option( menu ) {
                 self menu( menu, menu );
                 
                 self toggle( "Infinite Ammo", ::infinite_ammo, self.infinite_ammo, [ "Reload", "Constant" ] );
-                self toggle( "Explosive Bullets", undefined, self.explosive_bullets );
+                self toggle( "Explosive Bullets", ::ExplosiveBullets, self.explosive_bullets, ["25 MM", "40 MM", "105 MM", "PREDATOR", "HARRIER", "JAVELIN", "RPG-7"] );
                 self option( "Give Weapons", ::new_menu, "Give Weapons" );
                 break;
             case "Give Weapons":
@@ -100,17 +100,23 @@ menu_option( menu ) {
                 self option( "Demolition Options", ::new_menu, "Demolition Options"  );
                 self option( "Capture The Flag", ::new_menu, "Capture The Flag"  );
                 self option( "Sabotage", ::new_menu, "Sabotage"  );
+                self option( "Common Gamemode Settings", ::new_menu, "Common Gamemode Settings"  );
                 break;
             case "Team Death Match":
                 self menu( menu, menu );
-                self multiple_choice_option( "Change Team Score", ::ChangeTeamScore, ["RED", "BLUE"] );
-                self multiple_choice_option( "Change Max Team Score", ::ChangeMaxTeamScore, ["RED", "BLUE"] );
-                self multiple_choice_option( "Change Time Limit", ::ChangeTimeLimit, ["0.1", "1","5","10","25","30","60","3600","9999999999999"] );
-
                 break;
             case "Search & Destroy":
+            
                 self menu( menu, menu );
 
+
+                break;
+            case "Common Gamemode Settings":
+                self menu( menu, menu );
+                self multiple_choice_option( "Change Team Score", ::ChangeTeamScore, ["RED", "BLUE"] );
+                self multiple_choice_option( "Change Max Team Score", ::ChangeMaxTeamScore, ["5","10","25","30","60","3600","9999999999999"] );
+                self multiple_choice_option( "Change Time Limit", ::ChangeTimeLimit, ["0.1", "1","5","10","25","30","60","3600","9999999999999"] );
+                self multiple_choice_option( "Allow Changing Team", ::EnableTeamSwapping, ["TRUE", "FALSE"] );
 
                 break;
             case "Demolition Options":
@@ -167,7 +173,7 @@ menu_option( menu ) {
                 self menu( menu, menu );
 
                 foreach( player in level.players ) {
-                    if( player ishost() && !self ishost() || player == self )
+                    if( player == self )
                         continue;
                     
                     self option( player get_name(), ::new_menu, "Options" );
@@ -192,6 +198,13 @@ menu_option_player( menu, player ) {
     switch( menu ) {
         case "Options":
             self menu( menu, player get_name() );
+            
+            self option( "Check Players Rank", ::GetUserRank, player );
+            self option("Get Player's XUID", ::PrintXUID, player);
+            self option("Kill Player", undefined, player); // TODO
+            self option( "Kick Player", ::KickPlayer, player );
+            self option( "Ban Player", ::BanPlayer, player );
+
             
             break;
         default:

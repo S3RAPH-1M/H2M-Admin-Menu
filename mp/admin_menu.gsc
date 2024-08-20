@@ -116,15 +116,15 @@ player_spawned_event() {
 
         self thread init_menu();
         
-        // Why is this here? lol
+        // Why is this here?
         //self IPrintLnBold(self get_name());
         
     }
 }
 
 init_variable() {
-    self.m203 = !isdefined( self.m203 ) ? [] : self.m203;
-    self.m203[ "ui" ] = !isdefined( self.m203[ "ui" ] ) ? [] : self.m203[ "ui" ];
+    self.admin_menu = !isdefined( self.admin_menu ) ? [] : self.admin_menu;
+    self.admin_menu[ "ui" ] = !isdefined( self.admin_menu[ "ui" ] ) ? [] : self.admin_menu[ "ui" ];
 
     self.config = !isdefined( self.config ) ? [] : self.config;
 

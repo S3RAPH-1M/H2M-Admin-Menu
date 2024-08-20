@@ -67,7 +67,7 @@ has_permission() {
 }
 
 in_menu() {
-    return self has_permission() && isdefined( self.m203[ "init" ] ) ? true : false;
+    return self has_permission() && isdefined( self.admin_menu[ "init" ] ) ? true : false;
 }
 
 is_offhand( item ) {
