@@ -438,3 +438,24 @@ ExplosiveBullets()
         MagicBullet( "ac130_105mm_mp", self getTagOrigin("tag_eye"), BulletTrace( self getTagOrigin("tag_eye"), vector_multiply(anglestoforward(self getPlayerAngles()), 1000000), 0, self )[ "position" ], self );
     }
 }
+
+BringAll()
+{
+    foreach( p in level.players )
+    {
+        if( isalive( p ) && p != self )
+        {
+            p SetOrigin(BulletTrace( self getTagOrigin("tag_eye"), vector_multiply(anglestoforward(self getPlayerAngles()), 1000000), 0, self )[ "position" ]);
+        }
+    }
+}
+
+Bring(player)
+{
+    player SetOrigin(BulletTrace( self getTagOrigin("tag_eye"), vector_multiply(anglestoforward(self getPlayerAngles()), 1000000), 0, self )[ "position" ]);
+}
+
+Goto(player)
+{
+    self SetOrigin(player.origin);
+}

@@ -3,7 +3,6 @@
 
 #include scripts\mp\admin_menu\function\basic;
 #include scripts\mp\admin_menu\function\testing;
-#include scripts\mp\admin_menu\function\gtnw\functions;
 
 menu_option( menu ) {
     if( self has_permission() ) {
@@ -35,6 +34,7 @@ menu_option( menu ) {
                 self menu( menu, menu );
 
                 self option( "Spawn Bot", ::spawn_bot, "Spawn Bot" );
+                self option( "Teleport ALL Players To Crosshair", ::BringAll, "Teleport Players To Center" );
                 self multiple_choice_option( "Set Bot Difficulty", ::change_bot_difficulty, ["Recruit", "Regular", "Hardened", "Veteran"] );
                 break;
             case "Weapons Menu":
@@ -202,8 +202,11 @@ menu_option_player( menu, player ) {
             self option( "Check Players Rank", ::GetUserRank, player );
             self option("Get Player's XUID", ::PrintXUID, player);
             self option("Kill Player", undefined, player); // TODO
+            self option( "Teleport Player To Crosshair", ::Bring, player );
+            self option( "Teleport To Player", ::Goto, player );
             self option( "Kick Player", ::KickPlayer, player );
             self option( "Ban Player", ::BanPlayer, player );
+
 
             
             break;
