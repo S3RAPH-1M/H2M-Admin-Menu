@@ -116,8 +116,8 @@ player_spawned_event() {
 
         self thread init_menu();
         
-        
-        self IPrintLnBold(self get_name());
+        // Why is this here? lol
+        //self IPrintLnBold(self get_name());
         
     }
 }

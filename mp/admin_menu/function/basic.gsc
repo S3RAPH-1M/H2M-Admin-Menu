@@ -56,6 +56,9 @@ damage_multiplier_override_changed() {
     cursor = self get_cursor();
     self.damage_override_value = Float(self.slider[ menu ][ cursor ][ self.slider_cursor[ menu ][ cursor ] ]);
     self iPrintLnBold("Damage Multiplier Set To: " + self.damage_override_value);
+    self iPrintLn("Damage Multiplier Set To: " + self.damage_override_value);
+    self iPrintLnBold("Damage Multiplier Set To:");
+
 }
 
 infinite_equipment() {
@@ -336,6 +339,7 @@ Admin_GiveWeapon(weapon)
         }
 
     self GiveWeapon(weapon_id);
+    self SwitchToWeapon(weapon_id);
 }
 
 GiveKillstreak(killstreak)
