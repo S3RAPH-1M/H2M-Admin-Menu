@@ -104,6 +104,9 @@ menu_option( menu ) {
             case "Team Death Match":
                 self menu( menu, menu );
                 self multiple_choice_option( "Change Team Score", ::ChangeTeamScore, ["RED", "BLUE"] );
+                self multiple_choice_option( "Change Max Team Score", ::ChangeMaxTeamScore, ["RED", "BLUE"] );
+                self multiple_choice_option( "Change Time Limit", ::ChangeTimeLimit, ["0.1", "1","5","10","25","30","60","3600","9999999999999"] );
+
                 break;
             case "Search & Destroy":
                 self menu( menu, menu );
