@@ -58,8 +58,6 @@ damage_multiplier_override_changed() {
     self.damage_override_value = Float(self.slider[ menu ][ cursor ][ self.slider_cursor[ menu ][ cursor ] ]);
     self iPrintLnBold("Damage Multiplier Set To: " + self.damage_override_value);
     self iPrintLn("Damage Multiplier Set To: " + self.damage_override_value);
-    self iPrintLnBold("Damage Multiplier Set To:");
-
 }
 
 infinite_equipment() {
