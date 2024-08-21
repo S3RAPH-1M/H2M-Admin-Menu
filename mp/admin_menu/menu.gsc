@@ -117,6 +117,8 @@ menu_option( menu ) {
                 self multiple_choice_option( "Change Max Team Score", ::ChangeMaxTeamScore, ["5","10","25","30","60","3600","9999999999999"] );
                 self multiple_choice_option( "Change Time Limit", ::ChangeTimeLimit, ["0.1", "1","5","10","25","30","60","3600","9999999999999"] );
                 self multiple_choice_option( "Allow Changing Team", ::EnableTeamSwapping, ["TRUE", "FALSE"] );
+                self multiple_choice_option( "Change Gamemode", ::ChangeGamemode, ["SD","CTF","WAR"] );
+
 
                 break;
             case "Demolition Options":

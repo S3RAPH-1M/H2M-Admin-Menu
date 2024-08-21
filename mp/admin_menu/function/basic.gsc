@@ -432,10 +432,43 @@ ExplosiveBullets()
 {  
     //TODO: Setup the array of types of explosives to be taken by MagicBullet.
     self.explosive_bullets = !isdefined( self.explosive_bullets ) ? true : undefined;
+    menu = self get_menu();
+    cursor = self get_cursor();
+
     while( isdefined( self.explosive_bullets ) )
     {
+        bullet_type = self.slider[ menu ][ cursor ][ self.slider_cursor[ menu ][ cursor ] ];
+        bt = toLower(bullet_type);
         self waittill( "weapon_fired" );
-        MagicBullet( "ac130_105mm_mp", self getTagOrigin("tag_eye"), BulletTrace( self getTagOrigin("tag_eye"), vector_multiply(anglestoforward(self getPlayerAngles()), 1000000), 0, self )[ "position" ], self );
+        switch (bt) 
+        {
+            case "25 mm":
+                MagicBullet("ac130_25mm_mp", self getTagOrigin("tag_eye"), BulletTrace(self getTagOrigin("tag_eye"), vector_multiply(anglestoforward(self getPlayerAngles()), 1000000), 0, self)["position"], self);
+                break;
+            
+            case "40 mm":
+                MagicBullet("ac130_40mm_mp", self getTagOrigin("tag_eye"), BulletTrace(self getTagOrigin("tag_eye"), vector_multiply(anglestoforward(self getPlayerAngles()), 1000000), 0, self)["position"], self);
+                break;
+            
+            case "105 mm":
+                MagicBullet("ac130_105mm_mp", self getTagOrigin("tag_eye"), BulletTrace(self getTagOrigin("tag_eye"), vector_multiply(anglestoforward(self getPlayerAngles()), 1000000), 0, self)["position"], self);
+                break;
+            case "predator":
+                MagicBullet("remotemissile_projectile_mp", self getTagOrigin("tag_eye"), BulletTrace(self getTagOrigin("tag_eye"), vector_multiply(anglestoforward(self getPlayerAngles()), 1000000), 0, self)["position"], self);
+                break;
+            case "harrier":
+                MagicBullet("harrier_20mm_mp", self getTagOrigin("tag_eye"), BulletTrace(self getTagOrigin("tag_eye"), vector_multiply(anglestoforward(self getPlayerAngles()), 1000000), 0, self)["position"], self);
+                break;
+            case "javelin":
+                MagicBullet("javelin_mp", self getTagOrigin("tag_eye"), BulletTrace(self getTagOrigin("tag_eye"), vector_multiply(anglestoforward(self getPlayerAngles()), 1000000), 0, self)["position"], self);
+                break;
+            case "rpg-7":
+                MagicBullet("h2_rpg_mp", self getTagOrigin("tag_eye"), BulletTrace(self getTagOrigin("tag_eye"), vector_multiply(anglestoforward(self getPlayerAngles()), 1000000), 0, self)["position"], self);
+                break;
+            default:
+                // Optionally handle unknown ammo types or set a default behavior
+                break;
+        }
     }
 }
 
@@ -458,4 +491,19 @@ Bring(player)
 Goto(player)
 {
     self SetOrigin(player.origin);
+}
+
+ChangeGamemode(gamemode)
+{
+    gm = tolower(gamemode);
+    setdvar("g_gametype", gm);
+}
+
+ChangePlayerModel()
+{
+    precachemodel( "body_h2_opforce_assault" );
+    wait(1);
+    IPrintLn("Model Cached");
+    self setmodel( "body_h2_opforce_assault" );
+    restart_map();
 }
