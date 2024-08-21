@@ -12,29 +12,29 @@ open_menu( menu ) {
     if( !isdefined( self.cursor[ menu ] ) )
         self.cursor[ menu ] = 0;
     
-    self.m203[ "ui" ][ "color" ] = self shape( "CENTER", "CENTER", -310, -70, 180, 16, self.palette[ "color" ], 1, 2, "white" );
-    self.m203[ "ui" ][ "icon" ] = self text( "SERVPH's Admin Menu", self.config[ "font" ], self.config[ "font_scale" ], "LEFT", "CENTER", -345, -70, self.palette[ "white" ], 1, 10 );
-    self.m203[ "ui" ][ "header" ] = self shape( "CENTER", "CENTER", -310, -56, 180, 12, self.palette[ "black" ], 1, 4, "white" );
-    self.m203[ "ui" ][ "background" ] = self shape( "CENTER", "CENTER", -310, -32, 180, 12, self.palette[ "black" ], .8, 5, "white" );
-    self.m203[ "ui" ][ "scrollbar" ] = self shape( "CENTER", "CENTER", -310, -44, 180, 12, self.palette[ "white" ], 1, 7, "white" );
+    self.admin_menu[ "ui" ][ "color" ] = self shape( "CENTER", "CENTER", -310, -70, 180, 16, self.palette[ "color" ], 1, 2, "white" );
+    self.admin_menu[ "ui" ][ "icon" ] = self text( "SERVPH's Admin Menu", self.config[ "font" ], self.config[ "font_scale" ], "LEFT", "CENTER", -345, -70, self.palette[ "white" ], 1, 10 );
+    self.admin_menu[ "ui" ][ "header" ] = self shape( "CENTER", "CENTER", -310, -56, 180, 12, self.palette[ "black" ], 1, 4, "white" );
+    self.admin_menu[ "ui" ][ "background" ] = self shape( "CENTER", "CENTER", -310, -32, 180, 12, self.palette[ "black" ], .8, 5, "white" );
+    self.admin_menu[ "ui" ][ "scrollbar" ] = self shape( "CENTER", "CENTER", -310, -44, 180, 12, self.palette[ "white" ], 1, 7, "white" );
 
-    self.m203[ "ui" ][ "subtitle" ] = self text( "", self.config[ "font" ], self.config[ "font_scale" ], "LEFT", "CENTER", -397, -56, self.palette[ "white" ], 1, 10 );
-    self.m203[ "ui" ][ "counter" ] = self text( "", self.config[ "font" ], self.config[ "font_scale" ], "RIGHT", "CENTER", -223, -56, self.palette[ "white" ], 1, 10 );
+    self.admin_menu[ "ui" ][ "subtitle" ] = self text( "", self.config[ "font" ], self.config[ "font_scale" ], "LEFT", "CENTER", -397, -56, self.palette[ "white" ], 1, 10 );
+    self.admin_menu[ "ui" ][ "counter" ] = self text( "", self.config[ "font" ], self.config[ "font_scale" ], "RIGHT", "CENTER", -223, -56, self.palette[ "white" ], 1, 10 );
 
     self store_option();
     self disableoffhandweapons();
 
-    self.m203[ "init" ] = true;
+    self.admin_menu[ "init" ] = true;
 }
 
 close_menu() {
     self notify( "close_menu" );
 
     self clear_option();
-    self clear_all( self.m203[ "ui" ] );
+    self clear_all( self.admin_menu[ "ui" ] );
     self enableoffhandweapons();
 
-    self.m203[ "init" ] = undefined;
+    self.admin_menu[ "init" ] = undefined;
 }
 
 close_on_death() {
@@ -48,11 +48,11 @@ close_on_death() {
 
 close_on_game_ended() {
     level waittill( "game_ended" );
-    self clear_all( self.m203[ "ui" ] );
+    self clear_all( self.admin_menu[ "ui" ] );
 }
 
 store_title( title ) {
-    self.m203[ "ui" ][ "subtitle" ] set_text( isdefined( title ) ? title : self.structure[ self get_menu() ].title );
+    self.admin_menu[ "ui" ][ "subtitle" ] set_text( isdefined( title ) ? title : self.structure[ self get_menu() ].title );
 }
 
 store_option() {
@@ -92,25 +92,25 @@ store_option() {
             slider = isdefined( self.slider[ self get_menu() ][ ( a + start ) ] ) ? self.slider[ self get_menu() ][ ( a + start ) ][ self.slider_cursor[ self get_menu() ][ ( a + start ) ] ] : self.slider_cursor[ self get_menu() ][ ( a + start ) ];
 
             if( isdefined( self.structure[ self get_menu() ].toggle[ ( a + start ) ] ) )
-                self.m203[ "ui" ][ "toggle" ][ ( a + start ) ] = self shape( "RIGHT", "CENTER", -223, ( a * self.config[ "option_spacing" ] ) - 44, 4, 4, self.palette[ "white" ], 1, 10, isdefined( self.toggle[ self get_menu() ][ ( a + start ) ] ) && self.toggle[ self get_menu() ][ ( a + start ) ] ? level.shader_list[ "icon" ][ 2 ] : level.shader_list[ "icon" ][ 1 ] );
+                self.admin_menu[ "ui" ][ "toggle" ][ ( a + start ) ] = self shape( "RIGHT", "CENTER", -223, ( a * self.config[ "option_spacing" ] ) - 44, 4, 4, self.palette[ "white" ], 1, 10, isdefined( self.toggle[ self get_menu() ][ ( a + start ) ] ) && self.toggle[ self get_menu() ][ ( a + start ) ] ? level.shader_list[ "icon" ][ 2 ] : level.shader_list[ "icon" ][ 1 ] );
             
             if( isdefined( self.structure[ self get_menu() ].slider[ ( a + start ) ] ) )
-                self.m203[ "ui" ][ "slider" ][ ( a + start ) ] = self text( slider, self.config[ "font" ], self.config[ "font_scale" ], "RIGHT", "CENTER", isdefined( self.structure[ self get_menu() ].toggle[ ( a + start ) ] ) ? -230 : -223, ( a * self.config[ "option_spacing" ] ) - 44, color, 1, 10 );
+                self.admin_menu[ "ui" ][ "slider" ][ ( a + start ) ] = self text( slider, self.config[ "font" ], self.config[ "font_scale" ], "RIGHT", "CENTER", isdefined( self.structure[ self get_menu() ].toggle[ ( a + start ) ] ) ? -230 : -223, ( a * self.config[ "option_spacing" ] ) - 44, color, 1, 10 );
             
             if( isdefined( self.structure[ self get_menu() ].function[ ( a + start ) ] ) && self.structure[ self get_menu() ].function[ ( a + start ) ] == ::new_menu )
-                self.m203[ "ui" ][ "page" ][ ( a + start ) ] = self shape( "RIGHT", "CENTER", -223, ( a * self.config[ "option_spacing" ] ) - 44, 3, 3, color, 1, 10, level.shader_list[ "icon" ][ 0 ] );
+                self.admin_menu[ "ui" ][ "page" ][ ( a + start ) ] = self shape( "RIGHT", "CENTER", -223, ( a * self.config[ "option_spacing" ] ) - 44, 3, 3, color, 1, 10, level.shader_list[ "icon" ][ 0 ] );
             
             if( isdefined( self.structure[ self get_menu() ].shader ) )
-                self.m203[ "ui" ][ "text" ][ ( a + start ) ] = self shape( "CENTER", "CENTER", ( a * 20 ) + -390, -38, self get_cursor() == ( a + start ) ? self get_argument( 2 )[ ( a + start ) ] : 10, self get_cursor() == ( a + start ) ? self get_argument( 3 )[ ( a + start ) ] : 10, isdefined( self.structure[ self get_menu() ].argument_4[ ( a + start ) ] ) ? self get_argument( 4 )[ ( a + start ) ] : self.palette[ "white" ], self get_cursor() == ( a + start ) ? 1 : .2, 10, self get_option()[ ( a + start ) ] );
+                self.admin_menu[ "ui" ][ "text" ][ ( a + start ) ] = self shape( "CENTER", "CENTER", ( a * 20 ) + -390, -38, self get_cursor() == ( a + start ) ? self get_argument( 2 )[ ( a + start ) ] : 10, self get_cursor() == ( a + start ) ? self get_argument( 3 )[ ( a + start ) ] : 10, isdefined( self.structure[ self get_menu() ].argument_4[ ( a + start ) ] ) ? self get_argument( 4 )[ ( a + start ) ] : self.palette[ "white" ], self get_cursor() == ( a + start ) ? 1 : .2, 10, self get_option()[ ( a + start ) ] );
             else
-                self.m203[ "ui" ][ "text" ][ ( a + start ) ] = self text( text, self.config[ "font" ], self.config[ "font_scale" ], "LEFT", "CENTER", -397, ( a * self.config[ "option_spacing" ] ) - 44, color, 1, 10 );
+                self.admin_menu[ "ui" ][ "text" ][ ( a + start ) ] = self text( text, self.config[ "font" ], self.config[ "font_scale" ], "LEFT", "CENTER", -397, ( a * self.config[ "option_spacing" ] ) - 44, color, 1, 10 );
         }
 
-        if( !isdefined( self.m203[ "ui" ][ "text" ][ self get_cursor() ] ) )
+        if( !isdefined( self.admin_menu[ "ui" ][ "text" ][ self get_cursor() ] ) )
             self.cursor[ self get_menu() ] = ( option.size - 1 );
         
-        if( isdefined( self.m203[ "ui" ][ "scrollbar" ] ) )
-            self.m203[ "ui" ][ "scrollbar" ].y = self.m203[ "ui" ][ "text" ][ self get_cursor() ].y;
+        if( isdefined( self.admin_menu[ "ui" ][ "scrollbar" ] ) )
+            self.admin_menu[ "ui" ][ "scrollbar" ].y = self.admin_menu[ "ui" ][ "text" ][ self get_cursor() ].y;
     }
 }
 
@@ -125,8 +125,8 @@ update_scrolling() {
         self store_option();
     }
 
-    if( isdefined( self.m203[ "ui" ][ "scrollbar" ] ) && isdefined( self.m203[ "ui" ][ "text" ][ self.cursor[ menu ] ] ) )
-        self.m203[ "ui" ][ "scrollbar" ].y = self.m203[ "ui" ][ "text" ][ self get_cursor() ].y;
+    if( isdefined( self.admin_menu[ "ui" ][ "scrollbar" ] ) && isdefined( self.admin_menu[ "ui" ][ "text" ][ self.cursor[ menu ] ] ) )
+        self.admin_menu[ "ui" ][ "scrollbar" ].y = self.admin_menu[ "ui" ][ "text" ][ self get_cursor() ].y;
     
     self resize_menu();
 }
@@ -136,13 +136,13 @@ resize_menu() {
     size = ( self get_option().size >= self.config[ "option_limit" ] ) ? self.config[ "option_limit" ] : self get_option().size;
     alpha = ( size == 1 ) ? ( isdefined( self.structure[ self get_menu() ].shader ) ) ? 1 : 0 : ( isdefined( self.structure[ self get_menu() ].shader ) ) ? 0 : 1;
 
-    if( isdefined( self.m203[ "ui" ][ "counter" ] ) )
-        self.m203[ "ui" ][ "counter" ] set_text( "[" + ( self get_cursor() + 1 ) + "/" + self get_option().size + "]" );
+    if( isdefined( self.admin_menu[ "ui" ][ "counter" ] ) )
+        self.admin_menu[ "ui" ][ "counter" ] set_text( "[" + ( self get_cursor() + 1 ) + "/" + self get_option().size + "]" );
     
-    self.m203[ "ui" ][ "background" ] set_shader( self.m203[ "hud" ][ "background" ].shader, self.m203[ "hud" ][ "background" ].width, isdefined( self.structure[ self get_menu() ].shader ) ? 24 : height );
-    self.m203[ "ui" ][ "background" ].y = isdefined( self.structure[ self get_menu() ].shader ) ? -38 : ( ( size * 6 ) - 50 );
+    self.admin_menu[ "ui" ][ "background" ] set_shader( self.admin_menu[ "hud" ][ "background" ].shader, self.admin_menu[ "hud" ][ "background" ].width, isdefined( self.structure[ self get_menu() ].shader ) ? 24 : height );
+    self.admin_menu[ "ui" ][ "background" ].y = isdefined( self.structure[ self get_menu() ].shader ) ? -38 : ( ( size * 6 ) - 50 );
 
-    self.m203[ "ui" ][ "scrollbar" ].alpha = alpha;
+    self.admin_menu[ "ui" ][ "scrollbar" ].alpha = alpha;
 }
 
 update_menu( menu, cursor ) {
@@ -155,7 +155,7 @@ update_menu( menu, cursor ) {
                 continue;
             
             if( player get_menu() == menu || self != player && player check_option( self, menu, cursor ) )
-                if( isdefined( player.m203[ "ui" ][ "text" ][ cursor ] ) || player == self && player get_menu() == menu && isdefined( player.m203[ "ui" ][ "text" ][ cursor ] ) || self != player && player check_option( self, menu, cursor ) )
+                if( isdefined( player.admin_menu[ "ui" ][ "text" ][ cursor ] ) || player == self && player get_menu() == menu && isdefined( player.admin_menu[ "ui" ][ "text" ][ cursor ] ) || self != player && player check_option( self, menu, cursor ) )
                     player thread store_option();
         }
     }
@@ -177,8 +177,8 @@ check_option( player, menu, cursor ) {
 
 clear_option() {
     for( a = 0; a < self.config[ "element" ].size; a++ ) {
-        clear_all( self.m203[ "ui" ][ self.config[ "element" ][ a ] ] );
+        clear_all( self.admin_menu[ "ui" ][ self.config[ "element" ][ a ] ] );
 
-        self.m203[ "ui" ][ self.config[ "element" ][ a ] ] = [];
+        self.admin_menu[ "ui" ][ self.config[ "element" ][ a ] ] = [];
     }
 }

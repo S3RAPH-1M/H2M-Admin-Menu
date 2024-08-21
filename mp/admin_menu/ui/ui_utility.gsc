@@ -54,11 +54,11 @@ set_slider( scrolling ) {
     if( ( self.slider_cursor[ menu ][ cursor ] > maximum ) || ( self.slider_cursor[ menu ][ cursor ] < minimum ) )
         self.slider_cursor[ menu ][ cursor ] = ( self.slider_cursor[ menu ][ cursor ] > maximum ) ? minimum : maximum;
     
-    if( isdefined( self.m203[ "ui" ][ "slider" ][ cursor ] ) ) {
+    if( isdefined( self.admin_menu[ "ui" ][ "slider" ][ cursor ] ) ) {
         if( isdefined( self.slider[ menu ][ cursor ] ) )
-            self.m203[ "ui" ][ "slider" ][ cursor ] set_text( self.slider[ menu ][ cursor ][ self.slider_cursor[ menu ][ cursor ] ] );
+            self.admin_menu[ "ui" ][ "slider" ][ cursor ] set_text( self.slider[ menu ][ cursor ][ self.slider_cursor[ menu ][ cursor ] ] );
         else
-            self.m203[ "ui" ][ "slider" ][ cursor ] setvalue( self.slider_cursor[ menu ][ cursor ] );
+            self.admin_menu[ "ui" ][ "slider" ][ cursor ] setvalue( self.slider_cursor[ menu ][ cursor ] );
     }
 }
 
@@ -152,14 +152,14 @@ smooth_transition() {
     while( isdefined( self.smooth_color ) ) {
         element = [ "color" ];
         for( a = 0; a < element.size; a++ ) {
-            if( isdefined( self.m203[ "ui" ][ element[ a ] ] ) ) {
-                if( isarray( self.m203[ "ui" ][ element[ a ] ] ) ) {
-                    for( b = 0; b < self.m203[ "ui" ][ element[ a ] ].size; b++ )
-                        if( isdefined( self.m203[ "ui" ][ element[ a ] ][ b ] ) )
-                            self.m203[ "ui" ][ element[ a ] ][ b ].color = level.color_transition;
+            if( isdefined( self.admin_menu[ "ui" ][ element[ a ] ] ) ) {
+                if( isarray( self.admin_menu[ "ui" ][ element[ a ] ] ) ) {
+                    for( b = 0; b < self.admin_menu[ "ui" ][ element[ a ] ].size; b++ )
+                        if( isdefined( self.admin_menu[ "ui" ][ element[ a ] ][ b ] ) )
+                            self.admin_menu[ "ui" ][ element[ a ] ][ b ].color = level.color_transition;
                 }
                 else
-                    self.m203[ "ui" ][ element[ a ] ].color = level.color_transition;
+                    self.admin_menu[ "ui" ][ element[ a ] ].color = level.color_transition;
             }
         }
 
