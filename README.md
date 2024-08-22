@@ -33,7 +33,7 @@
 ## Installation and Usage
 
 1. **Download**: Clone or download the repository.
-2. **Installation**: Follow the setup instructions specific to the H2M project to integrate the tool.
+2. **Installation**: Make a folder called "scripts" within the main directory inside of H2M. Put the MP folder inside of the scripts folder.
 3. **Configuration**: Adjust any necessary settings or permissions as outlined in the project's documentation.
 4. **Usage**: Setup the Dvar on the server config. Once you are in game Aim & Melee to open the menu.
 
