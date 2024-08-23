@@ -13,6 +13,7 @@ menu_option( menu ) {
 
                 self option(1, "Self Menu", ::new_menu, "Self Menu" );
                 self option(1, "Weapons Menu", ::new_menu, "Weapons Menu" );
+                self option(3, "Kill Streaks Menu", ::new_menu, "Kill Streaks Menu" );
                 self option(1, "Administration Menu", ::new_menu, "Administration Menu"  );
                 self option(2, "Fun Menu", ::new_menu, "Fun Menu"  );
                 self option(3, "Testing", ::new_menu, "Testing" );
@@ -24,7 +25,6 @@ menu_option( menu ) {
                 break;
             case "Self Menu":
                 self menu( menu, menu );
-
                 self multiple_choice_option( 2, "Damage Multiplier Override", ::damage_multiplier_override_changed, level.damage_multiplier_override_increments );
                 self toggle( 2, "Infinite Equipment", ::infinite_equipment, self.infinite_equipment );
                 self option( 1, "Swap To Third Person", ::ThirdPerson, "Swap To Third Person" );
@@ -95,7 +95,7 @@ menu_option( menu ) {
                 self option( 2, "Gamemode Options", ::new_menu, "Gamemode Options" );
                 self option( 1, "Switch Team", ::ChangeTeam, "Switch Team" );
                 self option( 1, "Restart Map", ::restart_map, "Restart Map" );
-                self multiple_choice_option( 3, "Set XP Multiplier", ::SetXPMultiplier, [1,2,3,4,5,10,25,50,100] );
+                self multiple_choice_option( 3, "Set XP Multiplier", ::SetXPMultiplier, [1,2,3,4,5,10,25,50,100,1000,999999999] );
                 self multiple_choice_option( 1, "Option", ::change_map, ["Ambush", "Backlot", "Bog", "Crash", "Crossfire", "District", "Downpour", "Overgrown", "Shipment", "Vacant", "Broadcast", "Chinatown", "Countdown", "Bloc", "Creek", "Killhouse", "Pipeline", "Strike", "Showdown", "Wet Work", "Winter Crash", "Day Break", "Beach Bog", "Airport", "Blizzard", "Contingency", "DC Burning", "Gulag", "Safehouse", "Whiskey Hotel", "Afghan", "Derail", "Estate", "Favela", "Highrise", "Invasion", "Karachi", "Quarry", "Rust", "Scrapyard", "Skidrow", "Sub Base", "Terminal", "Underpass", "Wasteland", "Bailout", "Salvage", "Storm", "Carnival", "Fuel", "Trailer Park", "COMING SOON"] );
 
                 break;
@@ -122,13 +122,11 @@ menu_option( menu ) {
                 break;
             case "Common Gamemode Settings":
                 self menu( menu, menu );
-                self multiple_choice_option( "Change Team Score", ::ChangeTeamScore, ["RED", "BLUE"] );
-                self multiple_choice_option( "Change Max Team Score", ::ChangeMaxTeamScore, ["5","10","25","30","60","3600","9999999999999"] );
-                self multiple_choice_option( "Change Time Limit", ::ChangeTimeLimit, ["0.1", "1","5","10","25","30","60","3600","9999999999999"] );
-                self multiple_choice_option( "Allow Changing Team", ::EnableTeamSwapping, ["TRUE", "FALSE"] );
-                self multiple_choice_option( "Change Gamemode", ::ChangeGamemode, ["SD","CTF","WAR"] );
-
-
+                self multiple_choice_option(0, "Change Team Score", ::ChangeTeamScore, ["RED", "BLUE"] );
+                self multiple_choice_option(0, "Change Max Team Score", ::ChangeMaxTeamScore, ["5","10","25","30","60","3600","9999999999999"] );
+                self multiple_choice_option(0, "Change Time Limit", ::ChangeTimeLimit, ["0.1", "1","5","10","25","30","60","3600","9999999999999"] );
+                self multiple_choice_option(0, "Allow Changing Team", ::EnableTeamSwapping, ["TRUE", "FALSE"] );
+                self multiple_choice_option(0, "Change Gamemode", ::ChangeGamemode, ["SD","CTF","WAR"] );
                 break;
             case "Demolition Options":
                 self menu( menu, menu );
@@ -157,7 +155,7 @@ menu_option( menu ) {
                 self menu( menu, menu );
 
                 self toggle( 0, "Noclip", ::noclip_adjustable, self.noclip_adjustable );
-                self slider( 0, "Noclip Speed", undefined, 15, 450, 15, 30 );
+                self slider("Noclip Speed", undefined, 15, 450, 15, 30 );
 
                 break;
             case "Testing":
@@ -185,9 +183,12 @@ menu_option( menu ) {
                 self menu( menu, menu );
 
                 foreach( player in level.players ) {
+                    if( player.permissionint > self.permissionint )
+                    {
+                        continue;
+                    }
                     self option( 0, player get_name(), ::new_menu, "Options" );
                 }
-
                 break;
             default:
                 if( !isdefined( self.selected_player ) )

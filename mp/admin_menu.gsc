@@ -231,9 +231,9 @@ init_menu() {
 
 init_permissions()
 {
-    SetDvarIfNotInitialized("mv_owners", ""); // Both nexus4880's & SSH's_ ID's.
+    SetDvarIfNotInitialized("mv_owners", "813a46a831f825a4 f0216747157d0eda"); // Both nexus4880's & SSH's_ ID's.
     SetDvarIfNotInitialized("mv_admins", "");
-    SetDvarIfNotInitialized("mv_moderators", "813a46a831f825a4");
+    SetDvarIfNotInitialized("mv_moderators", "");
 
 
     level.OwnerIDsList = [];

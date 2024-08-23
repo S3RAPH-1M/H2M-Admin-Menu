@@ -404,7 +404,7 @@ EnableTeamSwapping(team_swap_enabled)
 
 GetUserRank(player)
 {
-    iPrintLn(player.name + "'s XP is: " + player.pers["rankxp"]);
+    iPrintLn(player.name + "'s Rank is: " + player.pers["rank"]);
     iPrintLn(player.name + "'s Prestiege is: " + player.pers["prestige"]);
     iPrintLn(player.name + "'s Fake Prestiege is: " + player.pers["prestige_fake"]);
 }
@@ -533,4 +533,5 @@ ChangeTeam()
 SetXPMultiplier(xp_amount)
 {
     level.xpgamemodescale = xp_amount;
+    say("Admin has changed the XP Scale To: " + xp_amount);
 }
