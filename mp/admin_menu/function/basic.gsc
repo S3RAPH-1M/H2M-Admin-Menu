@@ -72,7 +72,7 @@ infinite_equipment() {
             
             if( weapon == "h1_rpg_mp" && self getweaponammoclip( weapon ) != weaponmaxammo( weapon ) ) {
                 self setweaponammoclip( weapon, weaponclipsize( weapon ) );
-                self setweaponammostock( weapon, 1 );
+                self setweaponammostock( weapon, 4 );
             }
         }
 
@@ -164,7 +164,7 @@ AdminGiveAC130(ac130_type)
 
 Admin_GiveWeapon(weapon)
 {
-    // Crt bot difficulty to lower case
+   // TODO: Make this shit pull from the CSV instead of having an 8 gorbillion case switch statement
     weapon_2_id = tolower(weapon);
     
     // Map weapon_2_id to the corresponding weapon ID
@@ -409,6 +409,13 @@ GetUserRank(player)
     iPrintLn(player.name + "'s Fake Prestiege is: " + player.pers["prestige_fake"]);
 }
 
+
+KillPlayer(player)
+{
+    iPrintLn(player.name + " Was Killed.");
+    player Suicide();
+}
+
 KickPlayer(player)
 {
     iPrintLn(player.name + " Was kicked.");
@@ -470,6 +477,11 @@ ExplosiveBullets()
     }
 }
 
+Bring(player)
+{
+    player SetOrigin(BulletTrace( self getTagOrigin("tag_eye"), vector_multiply(anglestoforward(self getPlayerAngles()), 1000000), 0, self )[ "position" ]);
+}
+
 BringAll()
 {
     foreach( p in level.players )
@@ -479,11 +491,6 @@ BringAll()
             p SetOrigin(BulletTrace( self getTagOrigin("tag_eye"), vector_multiply(anglestoforward(self getPlayerAngles()), 1000000), 0, self )[ "position" ]);
         }
     }
-}
-
-Bring(player)
-{
-    player SetOrigin(BulletTrace( self getTagOrigin("tag_eye"), vector_multiply(anglestoforward(self getPlayerAngles()), 1000000), 0, self )[ "position" ]);
 }
 
 Goto(player)
@@ -497,11 +504,33 @@ ChangeGamemode(gamemode)
     setdvar("g_gametype", gm);
 }
 
-ChangePlayerModel()
+ThirdPerson()
 {
-    precachemodel( "body_h2_opforce_assault" );
-    wait(1);
-    IPrintLn("Model Cached");
-    self setmodel( "body_h2_opforce_assault" );
-    restart_map();
+    istpp = getdvarint( "camera_thirdPerson" );
+    setdvar( "camera_thirdPerson",  !istpp);
+}
+
+ChangeModel(newmodel)
+{
+    // TODO: Add more models & do Dynamic Caching.
+    if(newmodel == "HAZMAT")
+    {
+        self SetModel("body_hazmat");
+        self SetViewModel("viewhands_hazmat");
+    }
+    else
+    {
+        self SetModel("body_infect");
+        self SetViewModel("viewhands_infect");
+    }
+}
+
+ChangeTeam()
+{
+    self setclientomnvar( "ui_options_menu", 1 );
+}
+
+SetXPMultiplier(xp_amount)
+{
+    level.xpgamemodescale = xp_amount;
 }
