@@ -95,54 +95,18 @@ menu_option( menu ) {
                 self option( 2, "Gamemode Options", ::new_menu, "Gamemode Options" );
                 self option( 1, "Switch Team", ::ChangeTeam, "Switch Team" );
                 self option( 1, "Restart Map", ::restart_map, "Restart Map" );
-                self multiple_choice_option( 3, "Set XP Multiplier", ::SetXPMultiplier, [1,2,3,4,5,10,25,50,100,1000,999999999] );
+                // THIS CAN CAUSE DAMAGE TO PROFILES. USE RESPONSIBLY!!!!  
+                self multiple_choice_option( 3, "Set XP Multiplier", ::SetXPMultiplier, [1,2,3,4,5,10,25,50] );
                 self multiple_choice_option( 1, "Option", ::change_map, ["Ambush", "Backlot", "Bog", "Crash", "Crossfire", "District", "Downpour", "Overgrown", "Shipment", "Vacant", "Broadcast", "Chinatown", "Countdown", "Bloc", "Creek", "Killhouse", "Pipeline", "Strike", "Showdown", "Wet Work", "Winter Crash", "Day Break", "Beach Bog", "Airport", "Blizzard", "Contingency", "DC Burning", "Gulag", "Safehouse", "Whiskey Hotel", "Afghan", "Derail", "Estate", "Favela", "Highrise", "Invasion", "Karachi", "Quarry", "Rust", "Scrapyard", "Skidrow", "Sub Base", "Terminal", "Underpass", "Wasteland", "Bailout", "Salvage", "Storm", "Carnival", "Fuel", "Trailer Park", "COMING SOON"] );
 
                 break;
             case "Gamemode Options":
-                self menu( menu, menu );
-                self option( 2, "Team Death Match", ::new_menu, "Team Death Match"  );
-                self option( 2, "Search & Destroy", ::new_menu, "Search & Destroy"  );
-                self option( 2, "Demolition Options", ::new_menu, "Demolition Options"  );
-                self option( 2, "Capture The Flag", ::new_menu, "Capture The Flag"  );
-                self option( 2, "Sabotage", ::new_menu, "Sabotage"  );
-                self option( 2, "Common Gamemode Settings", ::new_menu, "Common Gamemode Settings"  );
-                break;
-            case "Team Death Match":
-                self menu( menu, menu );
-                // TODO
-
-
-                break;
-            case "Search & Destroy":
-                self menu( menu, menu );
-                // TODO
-
-
-                break;
-            case "Common Gamemode Settings":
                 self menu( menu, menu );
                 self multiple_choice_option(0, "Change Team Score", ::ChangeTeamScore, ["RED", "BLUE"] );
                 self multiple_choice_option(0, "Change Max Team Score", ::ChangeMaxTeamScore, ["5","10","25","30","60","3600","9999999999999"] );
                 self multiple_choice_option(0, "Change Time Limit", ::ChangeTimeLimit, ["0.1", "1","5","10","25","30","60","3600","9999999999999"] );
                 self multiple_choice_option(0, "Allow Changing Team", ::EnableTeamSwapping, ["TRUE", "FALSE"] );
                 self multiple_choice_option(0, "Change Gamemode", ::ChangeGamemode, ["SD","CTF","WAR"] );
-                break;
-            case "Demolition Options":
-                self menu( menu, menu );
-                // TODO
-
-                break;
-            case "Capture The Flag":
-                self menu( menu, menu );
-                // TODO
-
-
-                break;
-            case "Sabotage":
-                self menu( menu, menu );
-                // TODO
-
                 break;
             case "Kill Aura":
                 self menu( menu, menu );

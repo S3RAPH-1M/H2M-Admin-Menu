@@ -118,8 +118,6 @@ player_connect_event() {
             }
         }
 
-
-        say(player.name + "'s Permission is: " + player.permission);
         player thread player_spawned_event();
     }
 }
