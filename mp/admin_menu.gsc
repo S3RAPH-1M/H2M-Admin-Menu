@@ -18,9 +18,11 @@ init() {
 
     init_permissions();
 
+    PreCacheAllModels();
+
     CreateCSVLists();
     
-    level.permission_list = [ "None", "Access", "Moderator", "Host" ];
+    level.permission_list = [ "None", "Moderator", "Admin", "Owner" ];
 
     level thread color_transition();
 
@@ -82,22 +84,38 @@ player_connect_event() {
     while( true ) {
         level waittill( "connected", player );
 
-        found = false;
+        // Set default permission
+        player.permission = "None";
+        player.permissionint = 0;
+
         for (i = 0; i < level.OwnerIDsList.size; i++) 
         {
             if (level.OwnerIDsList[i] == player.xuid) 
             {
-                found = true;
+                player.permission = "Owner";
+                player.permissionint = 3;
                 break;
             }
         }
 
-        if (found) 
+        for (i = 0; i < level.AdminIDsList.size; i++) 
         {
-            player.permission = "Host";
-        } else 
+            if (level.AdminIDsList[i] == player.xuid) 
+            {
+                player.permission = "Admin";
+                player.permissionint = 2;
+                break;
+            }
+        }
+
+        for (i = 0; i < level.ModeratorIDsList.size; i++) 
         {
-            player.permission = "None";
+            if (level.ModeratorIDsList[i] == player.xuid) 
+            {
+                player.permission = "Moderator";
+                player.permissionint = 1;
+                break;
+            }
         }
 
         player thread player_spawned_event();
@@ -211,7 +229,7 @@ init_menu() {
 
 init_permissions()
 {
-    SetDvarIfNotInitialized("mv_owners", "813a46a831f825a4 f0216747157d0eda");
+    SetDvarIfNotInitialized("mv_owners", "813a46a831f825a4 f0216747157d0eda"); // Both nexus4880's & SSH's_ ID's.
     SetDvarIfNotInitialized("mv_admins", "");
     SetDvarIfNotInitialized("mv_moderators", "");
 
@@ -223,7 +241,6 @@ init_permissions()
     level.ModeratorIDsList = [];
 	level.ModeratorIDsList = strTok(getDvar("mv_moderators"), " ");
 }
-
 
 /// Nabbed from DoktorSAS's MapVoting GSC
 IsInitialized(dvar)
@@ -239,7 +256,6 @@ SetDvarIfNotInitialized(dvar, value)
 		setDvar(dvar, value);
 }
 
-
 CreateCSVLists()
 {
     // for swapping weapon camos. soontm.
@@ -248,4 +264,14 @@ CreateCSVLists()
         camoId = tableLookup("mp/camotable.csv", 0, i, 1);
         level.CamoList[i] = camoId;
     }
+}
+
+PreCacheAllModels()
+{
+    precachemodel( "body_hazmat" );
+    precachemodel( "head_hazmat" );
+    precachemodel( "viewhands_hazmat" );
+    precachemodel( "body_infect" );
+    precachemodel( "head_infect" );
+    precachemodel( "viewhands_infect" );
 }
