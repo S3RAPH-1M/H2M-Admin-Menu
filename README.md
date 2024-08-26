@@ -23,6 +23,9 @@
 
 ### Administration Menu
 - **Map Management**: Restart the current map or switch to a different one.
+- **Team Switching**: Enabling Team Swapping For Players.
+- **XP Multiplier**: Setting the XP multiplier to whatever you like! (BE CAREFUL & USE RESPONSIBLY)
+
 
 ### Fun Menu
 - **Customization**: Change weapon camo, enable Silent Aim, spawn bots, and set their difficulty.
