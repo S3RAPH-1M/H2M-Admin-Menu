@@ -132,7 +132,7 @@ new_menu( menu ) {
     self endon( "close_menu" );
 
     if( self get_menu() == "Session Players" && isdefined( menu ) ) {
-        player = level.players[ ( self get_cursor() + 1 ) ];
+        player = level.players[ ( self get_cursor()) ];
         self.selected_player = player;
     }
 

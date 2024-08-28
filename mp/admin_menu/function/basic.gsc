@@ -420,7 +420,7 @@ KillPlayer(player)
 KickPlayer(player)
 {
     iPrintLn(player.name + " Was kicked.");
-    executeCommand("kickClient " + player.name);
+    kick(player getEntityNumber());
 }
 
 BanPlayer(player)
